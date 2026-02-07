@@ -12,6 +12,31 @@ interface Job {
   totalPosts: number;
   applyMode: string;
   slug: string;
+    general: string;
+  obc: string;
+  om: string;
+  sc: string;
+  st1: string;
+  st2: string;
+  alc: string;
+  rba: string;
+  ews: string;
+  other: string;
+  lastDate?: string;
+
+  totalMarks: string;
+  
+  /* ================== Age limit ================== */
+  omal: string;
+  scal: string;
+  st1al: string;
+  st2al: string;
+  rbaal: string;
+  alcibal: string;
+  ewsal: string; 
+  obcal: string; 
+  pcpal: string;
+  otheral: string;
   links: {
     apply: string;
     notification: string;
