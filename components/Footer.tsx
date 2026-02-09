@@ -53,7 +53,7 @@ export default function Footer() {
       <div className="border-t border-gray-700">
         <div className="max-w-7xl mx-auto px-4 py-4 text-xs text-gray-400 flex flex-col md:flex-row justify-between">
           <p>
-            © {new Date().getFullYear()} JK Job Alert. All Rights Reserved.
+            © {new Date().getFullYear()} JK Career Updates. All Rights Reserved.
           </p>
           <p className="mt-2 md:mt-0">
             Disclaimer: JK Career Updates is not affiliated with any government
