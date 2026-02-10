@@ -1,29 +1,31 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://jkcareerupdates.in";
+
   return [
     {
-      url: "https://yourdomain.com",
+      url: baseUrl,
       lastModified: new Date(),
     },
     {
-      url: "https://yourdomain.com/jobs",
+      url: `${baseUrl}/jobs`,
       lastModified: new Date(),
     },
     {
-      url: "https://yourdomain.com/about",
+      url: `${baseUrl}/about`,
       lastModified: new Date(),
     },
     {
-      url: "https://yourdomain.com/privacy-policy",
+      url: `${baseUrl}/privacy-policy`,
       lastModified: new Date(),
     },
     {
-      url: "https://yourdomain.com/terms",
+      url: `${baseUrl}/terms`,
       lastModified: new Date(),
     },
     {
-      url: "https://yourdomain.com/disclaimer",
+      url: `${baseUrl}/disclaimer`,
       lastModified: new Date(),
     },
   ];
