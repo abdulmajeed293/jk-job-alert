@@ -25,6 +25,12 @@ export const metadata: Metadata = {
     follow: true,
   },
 
+  verification: {
+    google: "2343EdAFkIBeI6r2GO5DhFAHdlkfbTNrnff0WGIQz9c",
+  },
+
+   
+
    openGraph: {
     title: "JK Career Updates – Latest Govt & Private Jobs in Jammu & Kashmir",
     description:
