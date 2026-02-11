@@ -30,6 +30,14 @@ export default function JobCard({ job }: Props) {
           {job.company}
         </p>
 
+        {/* Department */}
+        <p
+          className="text-sm text-gray-700 mt-1 font-medium truncate"
+          itemProp="hiringOrganization"
+        >
+          {job.department}
+        </p>
+
         {/* Meta Info */}
         <p className="text-xs text-gray-500 mt-3 flex flex-wrap items-center gap-3">
           <span itemProp="jobLocation" className="flex items-center gap-1">
@@ -39,14 +47,6 @@ export default function JobCard({ job }: Props) {
           <span itemProp="employmentType" className="flex items-center gap-1">
             💼 {job.type}
           </span>
-        </p>
-
-        {/* Department */}
-        <p
-          className="text-sm text-gray-700 mt-1 font-medium truncate"
-          itemProp="hiringOrganization"
-        >
-          {job.department}
         </p>
 
         {/* Soft Divider */}
