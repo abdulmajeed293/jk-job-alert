@@ -3,7 +3,6 @@ import Link from "next/link";
 
 type Props = {
   job: Job;
-  
 };
 
 export default function JobCard({ job }: Props) {
@@ -40,6 +39,14 @@ export default function JobCard({ job }: Props) {
           <span itemProp="employmentType" className="flex items-center gap-1">
             💼 {job.type}
           </span>
+        </p>
+
+        {/* Department */}
+        <p
+          className="text-sm text-gray-700 mt-1 font-medium truncate"
+          itemProp="hiringOrganization"
+        >
+          {job.department}
         </p>
 
         {/* Soft Divider */}
