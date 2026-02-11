@@ -378,6 +378,11 @@ export default function JobDetailPage() {
             Syllabus: (Please Conform Official Syllabus)
           </h4>
 
+          <ul className="list-disc ml-5 text-sm space-y-1">
+            {job.exam.syllabus.map((s, i) => (
+              <li key={i}>{s.trim()}</li>
+            ))}
+          </ul>
           {job.syllabus_link && (
             <a
               href={job.syllabus_link}
@@ -385,15 +390,9 @@ export default function JobDetailPage() {
               rel="noopener noreferrer"
               className="inline-block mt-3 bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-700 transition"
             >
-              Check Official Syllabus
+              Check Here For Official Syllabus
             </a>
           )}
-
-          <ul className="list-disc ml-5 text-sm space-y-1">
-            {job.exam.syllabus.map((s, i) => (
-              <li key={i}>{s.trim()}</li>
-            ))}
-          </ul>
 
           <h4 className="font-semibold mt-4">Exam Pattern</h4>
           <div className="w-full h-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full mb-3"></div>
