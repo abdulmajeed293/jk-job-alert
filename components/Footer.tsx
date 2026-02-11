@@ -10,9 +10,11 @@ export default function Footer() {
             JK Career Updates
           </h3>
           <p className="text-gray-400">
-            JK Career Updates provides latest government & private job
-            notifications, syllabus, admit cards and results for Jammu &
-            Kashmir.
+            JK Career Updates is a trusted job information portal that provides
+            the latest Government and Private job notifications, exam syllabus,
+            admit cards, and results for Jammu & Kashmir. We aim to help job
+            seekers stay updated with verified recruitment news, application
+            deadlines, and career opportunities.
           </p>
         </div>
 
