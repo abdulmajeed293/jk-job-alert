@@ -6,7 +6,6 @@ import JobCard from "@/components/JobCard";
 import { Job } from "@/types/job";
 import Link from "next/link";
 
-
 // Define type for raw backend job object
 interface RawJob {
   id: number;
@@ -18,6 +17,7 @@ interface RawJob {
   slug: string;
   totalPosts: number;
   applyMode: string;
+  syllabus_link: string;
   om?: string;
   obc?: string;
   sc?: string;
@@ -39,8 +39,8 @@ interface RawJob {
   st2al: string;
   rbaal: string;
   alcibal: string;
-  ewsal: string; 
-  obcal: string; 
+  ewsal: string;
+  obcal: string;
   pcpal: string;
   otheral: string;
 }
@@ -51,18 +51,18 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [activeCategory, setActiveCategory] = useState("");
 
-  
   // Function to fetch jobs (used by button & real-time effect)
   const fetchJobs = async (searchTerm: string) => {
     if (!searchTerm.trim() && !activeCategory) {
-  setJobs([]);
-  return;
-}
-
+      setJobs([]);
+      return;
+    }
 
     try {
       setLoading(true);
-      const res = await api.get<RawJob[]>("/jobs", { params: { search: searchTerm, category: activeCategory, } });
+      const res = await api.get<RawJob[]>("/jobs", {
+        params: { search: searchTerm, category: activeCategory },
+      });
 
       const mappedJobs: Job[] = res.data.map((j: RawJob) => ({
         id: j.id,
@@ -76,16 +76,17 @@ export default function Home() {
         applyMode: j.applyMode,
         omal: j.omal,
         totalMarks: j.totalMarks,
+        syllabus_link: j.syllabus_link,
 
-      scal: j.scal,
-      st1al: j.st1al,
-      st2al: j.st2al,
-      rbaal: j.rbaal,
-      alcibal: j.alcibal,
-      ewsal: j.ewsal,
-      obcal: j.obcal,
-      pcpal: j.pcpal,
-      otheral: j.otheral,
+        scal: j.scal,
+        st1al: j.st1al,
+        st2al: j.st2al,
+        rbaal: j.rbaal,
+        alcibal: j.alcibal,
+        ewsal: j.ewsal,
+        obcal: j.obcal,
+        pcpal: j.pcpal,
+        otheral: j.otheral,
         om: j.om || "0",
         obc: j.obc || "0",
         sc: j.sc || "0",
@@ -120,7 +121,6 @@ export default function Home() {
     fetchJobs(query);
   };
 
-
   return (
     <section className="bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
@@ -138,8 +138,8 @@ export default function Home() {
           </h1>
 
           <p className="mt-5 text-lg text-gray-600 max-w-2xl mx-auto">
-            Get daily updates on JKSSB, JKPSC, Police, Army, Private sector jobs,
-            syllabus, admit cards, and results.
+            Get daily updates on JKSSB, JKPSC, Police, Army, Private sector
+            jobs, syllabus, admit cards, and results.
           </p>
 
           {/* Search Box */}
@@ -162,49 +162,50 @@ export default function Home() {
       </div>
 
       {/* Show search results */}
-{loading && <p className="text-center p-10 text-gray-500">Loading jobs...</p>}
+      {loading && (
+        <p className="text-center p-10 text-gray-500">Loading jobs...</p>
+      )}
 
-{!loading && query.trim() !== "" && (
-  <>
-    {jobs.length > 0 ? (
-      <div className="max-w-7xl mx-auto px-4 pb-16">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800">
-  {activeCategory ? `${activeCategory} Jobs` : "Search Results"}
-</h2>
+      {!loading && query.trim() !== "" && (
+        <>
+          {jobs.length > 0 ? (
+            <div className="max-w-7xl mx-auto px-4 pb-16">
+              <h2 className="text-2xl font-bold mb-6 text-gray-800">
+                {activeCategory ? `${activeCategory} Jobs` : "Search Results"}
+              </h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {jobs.map((job) => (
-            <JobCard key={job.id} job={job} />
-          ))}
-        </div>
-      </div>
-    ) : (
-      <div className="max-w-3xl mx-auto px-6 py-16 bg-white border border-gray-200 rounded-2xl shadow-lg text-center flex flex-col items-center gap-4">
-        {/* Info Icon */}
-        <div className="w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 text-2xl font-bold">
-          ℹ️
-        </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {jobs.map((job) => (
+                  <JobCard key={job.id} job={job} />
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="max-w-3xl mx-auto px-6 py-16 bg-white border border-gray-200 rounded-2xl shadow-lg text-center flex flex-col items-center gap-4">
+              {/* Info Icon */}
+              <div className="w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 text-2xl font-bold">
+                ℹ️
+              </div>
 
-        <p className="text-2xl font-semibold text-gray-800">
-          No jobs found
-        </p>
+              <p className="text-2xl font-semibold text-gray-800">
+                No jobs found
+              </p>
 
-        <p className="text-gray-500 text-center">
-          Try searching with different keywords, department names, or clear the search box to see all jobs.
-        </p>
+              <p className="text-gray-500 text-center">
+                Try searching with different keywords, department names, or
+                clear the search box to see all jobs.
+              </p>
 
-        <button
-          onClick={() => setQuery("")}
-          className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-xl shadow hover:bg-blue-700 transition"
-        >
-          Clear Search
-        </button>
-      </div>
-    )}
-  </>
-)}
-
-
+              <button
+                onClick={() => setQuery("")}
+                className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-xl shadow hover:bg-blue-700 transition"
+              >
+                Clear Search
+              </button>
+            </div>
+          )}
+        </>
+      )}
 
       {/* Categories */}
       <div className="max-w-7xl mx-auto px-4 py-12">
@@ -226,22 +227,16 @@ export default function Home() {
             { name: "Municipal Jobs", color: "from-lime-500 to-lime-700" },
             { name: "Bank Jobs", color: "from-amber-500 to-amber-700" },
             { name: "University Jobs", color: "from-violet-500 to-violet-700" },
-
           ].map((item) => (
-                      <Link
-            href={`/category/${item.name.toLowerCase().replace(/\s+/g, "-")}`}
-
-            key={item.name}
-            className="group bg-white border border-gray-200/70 rounded-xl p-5 text-center shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer block"
-          >
-
+            <Link
+              href={`/category/${item.name.toLowerCase().replace(/\s+/g, "-")}`}
+              key={item.name}
+              className="group bg-white border border-gray-200/70 rounded-xl p-5 text-center shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer block"
+            >
               <div
-              
                 className={`mx-auto mb-3 h-12 w-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center text-white font-bold text-lg`}
               >
                 {item.name[0]}
-                
-                
               </div>
 
               <h3 className="font-semibold text-gray-800 group-hover:text-blue-600 transition">

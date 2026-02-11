@@ -17,6 +17,7 @@ interface Job {
   department: string;
   totalPosts: number;
   applyMode: string;
+  syllabus_link: string;
   general: string;
   obc: string;
   sc: string;

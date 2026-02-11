@@ -11,8 +11,9 @@ interface Job {
   department: string;
   totalPosts: number;
   applyMode: string;
+  syllabus_link: string;
   slug: string;
-    general: string;
+  general: string;
   obc: string;
   om: string;
   sc: string;
@@ -25,7 +26,7 @@ interface Job {
   lastDate?: string;
 
   totalMarks: string;
-  
+
   /* ================== Age limit ================== */
   omal: string;
   scal: string;
@@ -33,8 +34,8 @@ interface Job {
   st2al: string;
   rbaal: string;
   alcibal: string;
-  ewsal: string; 
-  obcal: string; 
+  ewsal: string;
+  obcal: string;
   pcpal: string;
   otheral: string;
   links: {
