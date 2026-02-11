@@ -11,6 +11,7 @@ interface Job {
   slug: string;
   title: string;
   department: string;
+  company: string;
   location: string;
   type: "Government" | "Private";
   applyMode: string;
@@ -167,6 +168,9 @@ export default function JobDetailPage() {
           </p>
 
           <div className="mt-5 flex flex-wrap gap-3 text-sm">
+            <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded-full font-medium">
+              {job.company}
+            </span>
             <span className="bg-blue-100 text-blue-800 px-4 py-1 rounded-full font-medium">
               {job.type}
             </span>
