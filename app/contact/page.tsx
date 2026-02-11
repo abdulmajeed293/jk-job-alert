@@ -26,11 +26,25 @@ export default function ContactPage() {
 
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6 space-y-4">
         <p className="text-gray-700">
-          <strong>Email:</strong> contact@jkcareerupdates.in
+          <strong>Email:</strong>{" "}
+        <a
+          href="mailto:jkcareerupdates@gmail.com"
+          className="text-blue-600 hover:underline"
+        >
+          jkcareerupdates@gmail.com
+        </a>
+
         </p>
 
         <p className="text-gray-700">
-          <strong>Website:</strong> www.jkcareerupdates.in
+          <strong>Website:</strong>{" "}
+          <a
+            href="https://www.jkcareerupdates.in"
+            className="text-blue-600 hover:underline"
+          >
+            www.jkcareerupdates.in
+          </a>
+
         </p>
 
         <p className="text-gray-700 leading-relaxed">
