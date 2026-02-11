@@ -19,6 +19,7 @@ export interface Job {
   fee?: string;
   selection?: string;
   salary?: string;
+  
   syllabus?: string;
   pattern?: string;
   totalMarks: string;

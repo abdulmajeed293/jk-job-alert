@@ -70,6 +70,7 @@ interface Job {
     syllabus: string[];
     pattern: { subject: string; marks: string }[];
   };
+  syllabus_link: string;
 }
 
 /* ---------------- Main Component ---------------- */
@@ -376,6 +377,18 @@ export default function JobDetailPage() {
           <h4 className="font-semibold mt-2">
             Syllabus: (Please Conform Official Syllabus)
           </h4>
+
+          {job.syllabus_link && (
+            <a
+              href={job.syllabus_link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-3 bg-green-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-700 transition"
+            >
+              Check Official Syllabus
+            </a>
+          )}
+
           <ul className="list-disc ml-5 text-sm space-y-1">
             {job.exam.syllabus.map((s, i) => (
               <li key={i}>{s.trim()}</li>
@@ -414,6 +427,12 @@ export default function JobDetailPage() {
 
             {job.links.official && (
               <a href={job.links.official}>Official Website</a>
+            )}
+
+            {job.syllabus_link && (
+              <a href={job.syllabus_link} target="_blank">
+                Official Syllabus
+              </a>
             )}
 
             {job.links.admitCard && (
