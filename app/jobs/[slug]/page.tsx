@@ -383,7 +383,7 @@ export default function JobDetailPage() {
               href={job.syllabus_link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-3 bg-green-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-700 transition"
+              className="inline-block mt-3 bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-700 transition"
             >
               Check Official Syllabus
             </a>
