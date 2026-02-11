@@ -25,8 +25,15 @@ export const metadata: Metadata = {
     follow: true,
   },
 
+
   verification: {
     google: "2343EdAFkIBeI6r2GO5DhFAHdlkfbTNrnff0WGIQz9c",
+  },
+
+   icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png"
   },
 
    
