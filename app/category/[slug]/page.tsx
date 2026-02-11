@@ -24,6 +24,7 @@ interface RawJob {
   alc?: string;
   rba?: string;
   ews?: string;
+  syllabus_link: string;
   applyLink?: string;
   notificationLink?: string;
   officialLink?: string;
@@ -31,7 +32,7 @@ interface RawJob {
   other: string;
 
   totalMarks: string;
-  
+
   /* ================== Age limit ================== */
   omal: string;
   scal: string;
@@ -39,8 +40,8 @@ interface RawJob {
   st2al: string;
   rbaal: string;
   alcibal: string;
-  ewsal: string; 
-  obcal: string; 
+  ewsal: string;
+  obcal: string;
   pcpal: string;
   otheral: string;
 }
@@ -49,7 +50,7 @@ export default function CategoryPage() {
   const { slug } = useParams();
 
   // Send the slug exactly as in the DB (case-sensitive)
-  const category = String(slug); 
+  const category = String(slug);
 
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
@@ -71,6 +72,7 @@ export default function CategoryPage() {
           slug: j.slug,
           totalPosts: j.totalPosts,
           applyMode: j.applyMode,
+          syllabus_link: j.syllabus_link,
           om: j.om || "0",
           obc: j.obc || "0",
           sc: j.sc || "0",
@@ -82,7 +84,6 @@ export default function CategoryPage() {
           other: j.other || "0",
           totalMarks: j.totalMarks,
 
-
           omal: j.omal,
           scal: j.scal,
           st1al: j.st1al,
@@ -90,7 +91,7 @@ export default function CategoryPage() {
           rbaal: j.rbaal,
           alcibal: j.alcibal,
           ewsal: j.ewsal,
-          obcal: j.obcal, 
+          obcal: j.obcal,
           pcpal: j.pcpal,
           otheral: j.otheral,
           links: {
@@ -117,9 +118,7 @@ export default function CategoryPage() {
 
       {loading && <p>Loading...</p>}
 
-      {!loading && jobs.length === 0 && (
-        <p>No jobs found for this category.</p>
-      )}
+      {!loading && jobs.length === 0 && <p>No jobs found for this category.</p>}
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {jobs.map((job) => (
