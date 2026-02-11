@@ -36,8 +36,8 @@ interface Job {
   st2al: string;
   rbaal: string;
   alcibal: string;
-  ewsal: string; 
-  obcal: string; 
+  ewsal: string;
+  obcal: string;
   pcpal: string;
   otheral: string;
   links: {
@@ -81,7 +81,7 @@ export default function PrivateJobsPage() {
 
         <FeaturedJobsSlider jobs={pvtJobs} />
 
-        {/* Sidebar removed – full width jobs now */}
+        {/* Sidebar removed */}
         <div className="mt-10">
           {pvtJobs.length === 0 ? (
             <div className="bg-white border rounded-xl p-10 text-center shadow">

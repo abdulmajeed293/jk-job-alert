@@ -49,7 +49,7 @@ export default function CategoryPage() {
   const { slug } = useParams();
 
   // Send the slug exactly as in the DB (case-sensitive)
-  const category = String(slug); // ✅ removed .toUpperCase()
+  const category = String(slug); 
 
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
@@ -83,16 +83,16 @@ export default function CategoryPage() {
           totalMarks: j.totalMarks,
 
 
-           omal: j.omal,
-  scal: j.scal,
-  st1al: j.st1al,
-  st2al: j.st2al,
-  rbaal: j.rbaal,
-  alcibal: j.alcibal,
-  ewsal: j.ewsal,
-  obcal: j.obcal, 
-  pcpal: j.pcpal,
-  otheral: j.otheral,
+          omal: j.omal,
+          scal: j.scal,
+          st1al: j.st1al,
+          st2al: j.st2al,
+          rbaal: j.rbaal,
+          alcibal: j.alcibal,
+          ewsal: j.ewsal,
+          obcal: j.obcal, 
+          pcpal: j.pcpal,
+          otheral: j.otheral,
           links: {
             apply: j.applyLink || "",
             notification: j.notificationLink || "",

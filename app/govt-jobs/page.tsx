@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import JobCard from "@/components/JobCard";
 import FeaturedJobsSlider from "@/components/FeaturedJobsSlider";
-// ❌ JobFilterSidebar removed
 import api from "@/app/utils/api";
 
 interface Job {
@@ -29,7 +28,7 @@ interface Job {
   lastDate?: string;
 
   totalMarks: string;
-  
+
   /* ================== Age limit ================== */
   omal: string;
   scal: string;
@@ -37,8 +36,8 @@ interface Job {
   st2al: string;
   rbaal: string;
   alcibal: string;
-  ewsal: string; 
-  obcal: string; 
+  ewsal: string;
+  obcal: string;
   pcpal: string;
   otheral: string;
   links: { apply: string; notification: string; official: string };
@@ -63,22 +62,21 @@ export default function GovtJobsPage() {
           params: {
             type: "Government",
             category: department || undefined,
-            search: location || undefined
-          }
+            search: location || undefined,
+          },
         });
 
-        // ⬇️ ADD ONLY THIS
-const today = new Date();
-today.setHours(0,0,0,0);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
 
-const activeJobs = res.data.filter(job => {
-  if (!job.lastDate) return true;
-  const last = new Date(job.lastDate);
-  last.setHours(0,0,0,0);
-  return last >= today;
-});
+        const activeJobs = res.data.filter((job) => {
+          if (!job.lastDate) return true;
+          const last = new Date(job.lastDate);
+          last.setHours(0, 0, 0, 0);
+          return last >= today;
+        });
 
-setGovtJobs(activeJobs);
+        setGovtJobs(activeJobs);
       } catch (err) {
         console.error(err);
         alert("Failed to fetch jobs");
@@ -104,7 +102,7 @@ setGovtJobs(activeJobs);
           eligibility, and last date details.
         </p>
 
-        <FeaturedJobsSlider jobs={govtJobs} /> 
+        <FeaturedJobsSlider jobs={govtJobs} />
 
         {/* Sidebar removed – full width jobs now */}
         <div className="mt-10">
