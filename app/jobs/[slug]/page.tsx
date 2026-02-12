@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import api from "@/app/utils/api"; // Axios instance
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import PrivateJobPage from "./PrivateJobPage";
 
 /* ---------------- Type Definitions ---------------- */
 interface Job {
@@ -134,6 +135,10 @@ export default function JobDetailPage() {
   if (!job)
     return <p className="p-10 text-center text-gray-500">Job not found</p>;
 
+  if (job.type === "Private") {
+    return <PrivateJobPage job={job} />;
+  }
+
   if (isJobExpired(job)) {
     return (
       <div className="bg-gray-50 min-h-screen flex items-center justify-center px-4">
@@ -155,6 +160,9 @@ export default function JobDetailPage() {
       </div>
     );
   }
+
+  
+
 
   return (
     <article className="bg-gray-50 min-h-screen py-10">
