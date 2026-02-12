@@ -118,7 +118,9 @@ export default function CategoryPage() {
 
       {loading && <p>Loading...</p>}
 
-      {!loading && jobs.length === 0 && <p>No jobs found for this category.</p>}
+      {!loading && jobs.length === 0 && (
+        <p>New vacancies will be added soon.</p>
+      )}
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {jobs.map((job) => (
