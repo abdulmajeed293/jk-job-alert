@@ -45,3 +45,8 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+/* Enable horizontal swipe for sliders */
+.scroll-smooth {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+}
