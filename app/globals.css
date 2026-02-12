@@ -50,3 +50,22 @@ body {
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
 }
+
+/* Show only first 10 cards inside Featured slider */
+.featured-slider>*:nth-child(n+11) {
+  display: none;
+}
+@keyframes autoSlide {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-60%);
+  }
+}
+
+.featured-slider {
+  display: flex;
+  animation: autoSlide 25s linear infinite;
+}
