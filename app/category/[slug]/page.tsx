@@ -112,16 +112,23 @@ export default function CategoryPage() {
     fetchCategoryJobs();
   }, [category]);
 
-  const formatCategoryName = (slug: string) => {
-    return slug
-      .replace(/-/g, " ") // bank-jobs → bank jobs
-      .replace(/\b\w/g, (c) => c.toUpperCase()); // bank jobs → Bank Jobs
+  const formatCategoryTitle = (slug: string) => {
+    const formatted = slug
+      .replace(/-/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+
+    // If already ends with 'Jobs', don't add again
+    if (formatted.toLowerCase().endsWith(" jobs")) {
+      return formatted;
+    }
+
+    return `${formatted} Jobs`;
   };
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-10">
       <h1 className="text-3xl font-bold mb-8">
-        {formatCategoryName(category)} Jobs
+        {formatCategoryTitle(category)}
       </h1>
 
       {loading && <p>Loading...</p>}
