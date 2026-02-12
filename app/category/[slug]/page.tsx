@@ -112,9 +112,17 @@ export default function CategoryPage() {
     fetchCategoryJobs();
   }, [category]);
 
+  const formatCategoryName = (slug: string) => {
+    return slug
+      .replace(/-/g, " ") // bank-jobs → bank jobs
+      .replace(/\b\w/g, (c) => c.toUpperCase()); // bank jobs → Bank Jobs
+  };
+
   return (
     <section className="max-w-7xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold mb-8">{category} Jobs</h1>
+      <h1 className="text-3xl font-bold mb-8">
+        {formatCategoryName(category)} Jobs
+      </h1>
 
       {loading && <p>Loading...</p>}
 
