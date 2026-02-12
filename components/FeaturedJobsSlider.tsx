@@ -75,7 +75,7 @@ export default function FeaturedJobsSlider({ jobs }: { jobs: Job[] }) {
   };
 
   return (
-    <section className="relative bg-white border border-gray-200 rounded-2xl shadow-md p-5 overflow-hidden">
+    <section className="relative bg-gray-50 border border-gray-200 rounded-2xl shadow-md p-5 overflow-hidden">
       <div className="flex items-center justify-between mb-5">
         <h2 className="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-2">
           🔥 Featured Jobs
@@ -86,20 +86,10 @@ export default function FeaturedJobsSlider({ jobs }: { jobs: Job[] }) {
       </div>
 
       <div className="relative">
-        {/* Left Arrow */}
-        <button
-          onClick={slideLeft}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 
-             bg-transparent text-gray-700 hover:text-black 
-             p-2 text-2xl"
-        >
-          ◀
-        </button>
-
         {/* Slider */}
         <div
           ref={sliderRef}
-          className="flex gap-5 overflow-x-auto pb-4 pr-2 scrollbar-hide scroll-smooth"
+          className="flex gap-5 overflow-x-auto p-4 scrollbar-hide scroll-smooth bg-gray-100 rounded-xl"
         >
           {featured.map((job) => (
             <div
@@ -110,16 +100,6 @@ export default function FeaturedJobsSlider({ jobs }: { jobs: Job[] }) {
             </div>
           ))}
         </div>
-
-        {/* Right Arrow */}
-        <button
-          onClick={slideRight}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 
-             bg-transparent text-gray-700 hover:text-black 
-             p-2 text-2xl"
-        >
-          ▶
-        </button>
 
         {/* Gradient edges */}
         <div className="pointer-events-none absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-white via-white/20 to-transparent"></div>
