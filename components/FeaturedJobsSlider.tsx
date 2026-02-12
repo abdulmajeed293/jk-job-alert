@@ -75,9 +75,9 @@ export default function FeaturedJobsSlider({ jobs }: { jobs: Job[] }) {
   };
 
   return (
-    <section className="relative bg-gray-50 border border-gray-200 rounded-2xl shadow-md p-5 overflow-hidden">
+    <section className="relative bg-brandSoft border border-brand/20 rounded-2xl shadow-md p-5 overflow-hidden">
       <div className="flex items-center justify-between mb-5">
-        <h2 className="text-xl md:text-2xl font-bold text-gray-900 flex items-center gap-2">
+        <h2 className="text-xl md:text-2xl font-bold text-brand flex items-center gap-2">
           🔥 Featured Jobs
         </h2>
         <span className="text-xs md:text-sm text-gray-500">
@@ -89,7 +89,7 @@ export default function FeaturedJobsSlider({ jobs }: { jobs: Job[] }) {
         {/* Slider */}
         <div
           ref={sliderRef}
-          className="flex gap-5 overflow-x-auto p-4 scrollbar-hide scroll-smooth bg-gray-100 rounded-xl"
+          className="flex gap-5 overflow-x-auto p-4 scrollbar-hide scroll-smooth bg-white/70 backdrop-blur-md rounded-xl border border-brand/10"
         >
           {featured.map((job) => (
             <div
