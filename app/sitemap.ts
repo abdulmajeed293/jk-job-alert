@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://www.jkcareerupdates.in";
+const BASE_URL = "https://jkcareerupdates.in";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let jobs: { slug: string; updatedAt?: string }[] = [];

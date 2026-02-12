@@ -7,16 +7,11 @@ export async function generateMetadata({
   const title = rawSlug.split("-").join(" ");
 
   return {
-    title: `${title} – Apply Online | JK Job Alert`,
-    description:
-      "Check eligibility, salary, syllabus, exam date and apply online for this JK government job.",
+    title: `${title} Recruitment 2026 – Apply Online | JK Career Updates`,
+    description: `Apply for ${title} 2026. Check eligibility, age limit, salary, important dates, syllabus and official notification in Jammu & Kashmir.`,
   };
 }
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return children;
 }

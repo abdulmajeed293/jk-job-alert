@@ -5,7 +5,8 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "JK Career Updates – Latest Govt & Private Jobs in Jammu & Kashmir",
+    default:
+      "JK Career Updates – Latest Govt & Private Jobs in Jammu & Kashmir",
     template: "%s | JK Career Updates",
   },
   description:
@@ -25,20 +26,17 @@ export const metadata: Metadata = {
     follow: true,
   },
 
-
   verification: {
     google: "2343EdAFkIBeI6r2GO5DhFAHdlkfbTNrnff0WGIQz9c",
   },
 
-   icons: {
+  icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png"
+    apple: "/apple-touch-icon.png",
   },
 
-   
-
-   openGraph: {
+  openGraph: {
     title: "JK Career Updates – Latest Govt & Private Jobs in Jammu & Kashmir",
     description:
       "Latest JKSSB, JKPSC, Police, Army and Private jobs in Jammu & Kashmir with official notifications.",
