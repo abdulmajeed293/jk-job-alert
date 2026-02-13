@@ -116,6 +116,17 @@ export default function PrivateJobPage({ job }: { job: Job }) {
             </a>
           )}
         </div>
+        {/* INTRODUCTION */}
+        {job.introduction && (
+          <div className="bg-white rounded-3xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300">
+            <h2 className="text-xl font-bold mb-4">{job.title} Overview</h2>
+
+            <div
+              className="prose max-w-none text-gray-800"
+              dangerouslySetInnerHTML={{ __html: job.introduction }}
+            />
+          </div>
+        )}
 
         {/* Job Description */}
         {job.description && (
