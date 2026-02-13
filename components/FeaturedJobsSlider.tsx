@@ -6,6 +6,7 @@ import JobCard from "./JobCard";
 interface Job {
   id: number;
   title: string;
+  introduction: string;
   company: string;
   type: "Government" | "Private";
   location: string;

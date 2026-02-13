@@ -9,6 +9,7 @@ import { Job } from "@/types/job";
 interface RawJob {
   id: number;
   title: string;
+  introduction: string;
   company: string;
   type: "Government" | "Private";
   location: string;
@@ -65,6 +66,7 @@ export default function CategoryPage() {
         const mapped: Job[] = res.data.map((j) => ({
           id: j.id,
           title: j.title,
+          introduction: j.introduction,
           company: j.company,
           type: j.type,
           location: j.location,

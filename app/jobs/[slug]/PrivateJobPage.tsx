@@ -6,6 +6,7 @@ interface Job {
   id: number;
   slug: string;
   title: string;
+  introduction: string;
   department?: string;
   company?: string;
   location?: string;

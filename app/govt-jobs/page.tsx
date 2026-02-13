@@ -8,6 +8,7 @@ import api from "@/app/utils/api";
 interface Job {
   id: number;
   title: string;
+  introduction: string;
   company: string;
   type: "Government" | "Private";
   location: string;

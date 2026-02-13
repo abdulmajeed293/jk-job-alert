@@ -11,6 +11,7 @@ interface Job {
   id: number;
   slug: string;
   title: string;
+  introduction: string;
   department: string;
   company: string;
   location: string;
@@ -161,9 +162,6 @@ export default function JobDetailPage() {
     );
   }
 
-  
-
-
   return (
     <article className="bg-gray-50 min-h-screen py-10">
       <div className="max-w-6xl mx-auto px-4 grid gap-8">
@@ -211,6 +209,16 @@ export default function JobDetailPage() {
             )}
           </div>
         </div>
+
+        {/* INTRODUCTION */}
+        {job.introduction && (
+          <div className="bg-white rounded-3xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300">
+            <h2 className="text-xl font-bold mb-3">{job.title} Overview</h2>
+            <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+              {job.introduction}
+            </p>
+          </div>
+        )}
 
         {/* QUICK STATS */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">

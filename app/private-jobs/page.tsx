@@ -10,6 +10,7 @@ import api from "@/app/utils/api";
 interface Job {
   id: number;
   title: string;
+  introduction: string;
   company: string;
   slug: string;
   type: "Government" | "Private";

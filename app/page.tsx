@@ -10,6 +10,7 @@ import Link from "next/link";
 interface RawJob {
   id: number;
   title: string;
+  introduction: string;
   company: string;
   type: "Government" | "Private";
   location: string;
@@ -67,6 +68,7 @@ export default function Home() {
       const mappedJobs: Job[] = res.data.map((j: RawJob) => ({
         id: j.id,
         title: j.title,
+        introduction: j.introduction,
         company: j.company,
         type: j.type,
         location: j.location,
