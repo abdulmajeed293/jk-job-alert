@@ -219,40 +219,53 @@ export default function Home() {
       </div>
 
       {/* Latest Jobs Vertical Ticker */}
-      <div className="bg-white border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <h2 className="text-xl font-bold text-gray-800 mb-4">
-            Latest Job Updates
-          </h2>
+      <section className="bg-gray-50 py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          {/* Section Header */}
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+              Latest Job Updates
+            </h2>
+            <p className="text-gray-500 text-sm mt-2">
+              Recently added government and private job notifications
+            </p>
+          </div>
 
-          <div className="relative h-40 overflow-hidden">
-            <div className="animate-scrollUp space-y-4">
-              {latestJobs.map((job) => (
-                <Link
-                  key={job.id}
-                  href={`/jobs/${job.slug}`}
-                  className="flex justify-between items-center bg-gray-50 hover:bg-blue-50 border border-gray-200 rounded-lg px-4 py-3 transition"
-                >
-                  <div>
-                    <p className="font-semibold text-gray-800">{job.title}</p>
-                    <p className="text-sm text-gray-500">{job.company}</p>
-                  </div>
-
-                  <span
-                    className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                      job.type === "Government"
-                        ? "bg-green-100 text-green-700"
-                        : "bg-blue-100 text-blue-700"
-                    }`}
+          {/* Ticker Box */}
+          <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-6">
+            <div className="relative h-56 overflow-hidden">
+              <div className="animate-scrollUp space-y-5">
+                {latestJobs.map((job) => (
+                  <Link
+                    key={job.id}
+                    href={`/jobs/${job.slug}`}
+                    className="flex justify-between items-center border-b border-gray-100 pb-4 last:border-none hover:bg-gray-50 px-3 py-2 rounded-lg transition"
                   >
-                    {job.type}
-                  </span>
-                </Link>
-              ))}
+                    <div className="flex-1">
+                      <p className="font-semibold text-gray-800 hover:text-blue-600 transition">
+                        {job.title}
+                      </p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        {job.company}
+                      </p>
+                    </div>
+
+                    <span
+                      className={`text-xs font-medium px-3 py-1 rounded-full ${
+                        job.type === "Government"
+                          ? "bg-green-100 text-green-700"
+                          : "bg-blue-100 text-blue-700"
+                      }`}
+                    >
+                      {job.type}
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Show search results */}
       {loading && (
