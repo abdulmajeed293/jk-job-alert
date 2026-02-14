@@ -9,6 +9,9 @@ export const metadata: Metadata = {
       "JK Govt Jobs 2026 – JKSSB, JKPSC, Police & Private Jobs | JK Career Updates",
     template: "%s | JK Career Updates",
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
 
   description:
     "JK Career Updates provides latest JK Govt Jobs 2026 including JKSSB recruitment, JKPSC notifications, JK Police vacancies and private jobs in Jammu & Kashmir. Get official notifications, syllabus, admit cards and results updates.",
@@ -42,10 +45,6 @@ export const metadata: Metadata = {
 
   verification: {
     google: "2343EdAFkIBeI6r2GO5DhFAHdlkfbTNrnff0WGIQz9c",
-  },
-
-  icons: {
-    icon: "/favicon.ico",
   },
 
   openGraph: {
