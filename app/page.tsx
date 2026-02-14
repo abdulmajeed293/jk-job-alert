@@ -52,6 +52,8 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [activeCategory, setActiveCategory] = useState("");
 
+  const [latestJobs, setLatestJobs] = useState<Job[]>([]);
+
   // Function to fetch jobs (used by button & real-time effect)
   const fetchJobs = async (searchTerm: string) => {
     if (!searchTerm.trim() && !activeCategory) {
@@ -123,6 +125,59 @@ export default function Home() {
     fetchJobs(query);
   };
 
+  useEffect(() => {
+    const fetchLatestJobs = async () => {
+      try {
+        const res = await api.get<RawJob[]>("/jobs");
+
+        const mapped = res.data.slice(0, 10).map((j: RawJob) => ({
+          id: j.id,
+          title: j.title,
+          introduction: j.introduction,
+          company: j.company,
+          type: j.type,
+          location: j.location,
+          department: j.department,
+          slug: j.slug,
+          totalPosts: j.totalPosts,
+          applyMode: j.applyMode,
+          omal: j.omal,
+          totalMarks: j.totalMarks,
+          syllabus_link: j.syllabus_link,
+          scal: j.scal,
+          st1al: j.st1al,
+          st2al: j.st2al,
+          rbaal: j.rbaal,
+          alcibal: j.alcibal,
+          ewsal: j.ewsal,
+          obcal: j.obcal,
+          pcpal: j.pcpal,
+          otheral: j.otheral,
+          om: j.om || "0",
+          obc: j.obc || "0",
+          sc: j.sc || "0",
+          st1: j.st1 || "0",
+          st2: j.st2 || "0",
+          alc: j.alc || "0",
+          rba: j.rba || "0",
+          ews: j.ews || "0",
+          other: j.other || "0",
+          links: {
+            apply: j.applyLink || "",
+            notification: j.notificationLink || "",
+            official: j.officialLink || "",
+          },
+        }));
+
+        setLatestJobs(mapped);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchLatestJobs();
+  }, []);
+
   return (
     <section className="bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
@@ -159,6 +214,42 @@ export default function Home() {
             >
               Search
             </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Latest Jobs Vertical Ticker */}
+      <div className="bg-white border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <h2 className="text-xl font-bold text-gray-800 mb-4">
+            Latest Job Updates
+          </h2>
+
+          <div className="relative h-40 overflow-hidden">
+            <div className="animate-scrollUp space-y-4">
+              {latestJobs.map((job) => (
+                <Link
+                  key={job.id}
+                  href={`/jobs/${job.slug}`}
+                  className="flex justify-between items-center bg-gray-50 hover:bg-blue-50 border border-gray-200 rounded-lg px-4 py-3 transition"
+                >
+                  <div>
+                    <p className="font-semibold text-gray-800">{job.title}</p>
+                    <p className="text-sm text-gray-500">{job.company}</p>
+                  </div>
+
+                  <span
+                    className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                      job.type === "Government"
+                        ? "bg-green-100 text-green-700"
+                        : "bg-blue-100 text-blue-700"
+                    }`}
+                  >
+                    {job.type}
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

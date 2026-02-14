@@ -69,3 +69,16 @@ body {
   display: flex;
   animation: autoSlide 25s linear infinite;
 }
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-scrollUp {
+  animation: scrollUp 15s linear infinite;
+}
