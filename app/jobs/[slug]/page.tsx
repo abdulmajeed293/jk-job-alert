@@ -184,9 +184,11 @@ export default function JobDetailPage() {
             <span className="bg-green-100 text-green-800 px-4 py-1 rounded-full font-medium">
               {job.applyMode}
             </span>
-            <span className="bg-purple-100 text-purple-800 px-4 py-1 rounded-full font-medium">
-              {job.totalPosts} Posts
-            </span>
+            {Number(job.totalPosts) > 0 && (
+              <span className="bg-purple-100 text-purple-800 px-4 py-1 rounded-full font-medium">
+                {job.totalPosts} Posts
+              </span>
+            )}
           </div>
 
           <div className="mt-6 flex flex-col sm:flex-row gap-4">
@@ -315,10 +317,14 @@ export default function JobDetailPage() {
                   <td className="p-3">EWS</td>
                   <td className="p-3 text-right font-semibold">{job.ews}</td>
                 </tr>
-                <tr className="border-t hover:bg-gray-50 transition">
-                  <td className="p-3">Others</td>
-                  <td className="p-3 text-right font-semibold">{job.other}</td>
-                </tr>
+                {Number(job.other || 0) > 0 && (
+                  <tr className="border-t hover:bg-gray-50 transition">
+                    <td className="p-3">Others</td>
+                    <td className="p-3 text-right font-semibold">
+                      {job.other}
+                    </td>
+                  </tr>
+                )}
                 <tr className="border-t bg-gray-100 font-bold">
                   <td className="p-3">Total Posts</td>
                   <td className="p-3 text-right">
@@ -380,14 +386,22 @@ export default function JobDetailPage() {
                 <td className="p-3">EWS</td>
                 <td className="p-3 text-right font-semibold">{job.ewsal}</td>
               </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">Physically Challenged Person </td>
-                <td className="p-3 text-right font-semibold">{job.pcpal}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">Others</td>
-                <td className="p-3 text-right font-semibold">{job.otheral}</td>
-              </tr>
+              {job.pcpal && Number(job.pcpal) > 0 && (
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">Physically Challenged Person</td>
+                  <td className="p-3 text-right font-semibold">{job.pcpal}</td>
+                </tr>
+              )}
+              {job.otheral &&
+                job.otheral.trim() !== "" &&
+                job.otheral !== "0" && (
+                  <tr className="border-t hover:bg-gray-50 transition">
+                    <td className="p-3">Others</td>
+                    <td className="p-3 text-right font-semibold">
+                      {job.otheral}
+                    </td>
+                  </tr>
+                )}
             </tbody>
           </table>
         </Section>
@@ -401,49 +415,52 @@ export default function JobDetailPage() {
             ]}
           />
         </Section>
+        {((job.exam?.syllabus && job.exam.syllabus.length > 0) ||
+          (job.exam?.pattern && job.exam.pattern.length > 0) ||
+          job.syllabus_link) && (
+          <Section title="Exam Details">
+            <h4 className="font-semibold mt-2">
+              Syllabus: (Please Conform Official Syllabus)
+            </h4>
 
-        <Section title="Exam Details">
-          <h4 className="font-semibold mt-2">
-            Syllabus: (Please Conform Official Syllabus)
-          </h4>
-
-          <ul className="list-disc ml-5 text-sm space-y-1">
-            {job.exam.syllabus.map((s, i) => (
-              <li key={i}>{s.trim()}</li>
-            ))}
-          </ul>
-          {job.syllabus_link && (
-            <a
-              href={job.syllabus_link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-3 bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-700 transition"
-            >
-              Check Here For Official Syllabus
-            </a>
-          )}
-
-          <h4 className="font-semibold mt-4">Exam Pattern</h4>
-          <div className="w-full h-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full mb-3"></div>
-          <table className="w-full text-sm border rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition">
-            <tbody>
-              {job.exam.pattern.map((p) => (
-                <tr
-                  key={p.subject}
-                  className="border-t hover:bg-gray-50 transition"
-                >
-                  <td className="p-3">{p.subject}</td>
-                  <td className="p-3 text-right">{p.marks}</td>
-                </tr>
+            <ul className="list-disc ml-5 text-sm space-y-1">
+              {job.exam.syllabus.map((s, i) => (
+                <li key={i}>{s.trim()}</li>
               ))}
-              {/* 🔥 Total row (auto from backend) */}
-              <tr className="border-t bg-gray-100 font-bold">
-                <td className="p-3 text-left">Total Marks</td>
-                <td className="p-3 text-right">{job.totalMarks}</td>
-              </tr>
-            </tbody>
-          </table>
-        </Section>
+            </ul>
+            {job.syllabus_link && (
+              <a
+                href={job.syllabus_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-3 bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-green-700 transition"
+              >
+                Check Here For Official Syllabus
+              </a>
+            )}
+
+            <h4 className="font-semibold mt-4">Exam Pattern</h4>
+            <div className="w-full h-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full mb-3"></div>
+            <table className="w-full text-sm border rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition">
+              <tbody>
+                {job.exam.pattern.map((p) => (
+                  <tr
+                    key={p.subject}
+                    className="border-t hover:bg-gray-50 transition"
+                  >
+                    <td className="p-3">{p.subject}</td>
+                    <td className="p-3 text-right">{p.marks}</td>
+                  </tr>
+                ))}
+                {/* 🔥 Total row (auto from backend) */}
+                <tr className="border-t bg-gray-100 font-bold">
+                  <td className="p-3 text-left">Total Marks</td>
+                  <td className="p-3 text-right">{job.totalMarks}</td>
+                </tr>
+              </tbody>
+            </table>
+          </Section>
+        )}
 
         <Section title="Important Links">
           <div className="flex flex-col gap-2 text-blue-600 font-medium">
