@@ -263,69 +263,80 @@ export default function JobDetailPage() {
           </p>
         </Section>
 
-        <Section title="Vacancy Details">
-          <table className="w-full text-sm border rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="p-3 text-left">Category</th>
-                <th className="p-3 text-right">Posts</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Use individual fields from job object */}
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">OM</td>
-                <td className="p-3 text-right font-semibold">{job.om}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">OBC</td>
-                <td className="p-3 text-right font-semibold">{job.obc}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">SC</td>
-                <td className="p-3 text-right font-semibold">{job.sc}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">ST-1</td>
-                <td className="p-3 text-right font-semibold">{job.st1}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">ST-2</td>
-                <td className="p-3 text-right font-semibold">{job.st2}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">ALC/IB</td>
-                <td className="p-3 text-right font-semibold">{job.alc}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">RBA</td>
-                <td className="p-3 text-right font-semibold">{job.rba}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">EWS</td>
-                <td className="p-3 text-right font-semibold">{job.ews}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">Others</td>
-                <td className="p-3 text-right font-semibold">{job.other}</td>
-              </tr>
-              <tr className="border-t bg-gray-100 font-bold">
-                <td className="p-3">Total Posts</td>
-                <td className="p-3 text-right">
-                  {Number(job.om || 0) +
-                    Number(job.obc || 0) +
-                    Number(job.sc || 0) +
-                    Number(job.st1 || 0) +
-                    Number(job.st2 || 0) +
-                    Number(job.alc || 0) +
-                    Number(job.rba || 0) +
-                    Number(job.ews || 0) +
-                    Number(job.other || 0)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </Section>
+        {Number(job.om || 0) +
+          Number(job.obc || 0) +
+          Number(job.sc || 0) +
+          Number(job.st1 || 0) +
+          Number(job.st2 || 0) +
+          Number(job.alc || 0) +
+          Number(job.rba || 0) +
+          Number(job.ews || 0) +
+          Number(job.other || 0) >
+          0 && (
+          <Section title="Vacancy Details">
+            <table className="w-full text-sm border rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="p-3 text-left">Category</th>
+                  <th className="p-3 text-right">Posts</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* Use individual fields from job object */}
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">OM</td>
+                  <td className="p-3 text-right font-semibold">{job.om}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">OBC</td>
+                  <td className="p-3 text-right font-semibold">{job.obc}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">SC</td>
+                  <td className="p-3 text-right font-semibold">{job.sc}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">ST-1</td>
+                  <td className="p-3 text-right font-semibold">{job.st1}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">ST-2</td>
+                  <td className="p-3 text-right font-semibold">{job.st2}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">ALC/IB</td>
+                  <td className="p-3 text-right font-semibold">{job.alc}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">RBA</td>
+                  <td className="p-3 text-right font-semibold">{job.rba}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">EWS</td>
+                  <td className="p-3 text-right font-semibold">{job.ews}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">Others</td>
+                  <td className="p-3 text-right font-semibold">{job.other}</td>
+                </tr>
+                <tr className="border-t bg-gray-100 font-bold">
+                  <td className="p-3">Total Posts</td>
+                  <td className="p-3 text-right">
+                    {Number(job.om || 0) +
+                      Number(job.obc || 0) +
+                      Number(job.sc || 0) +
+                      Number(job.st1 || 0) +
+                      Number(job.st2 || 0) +
+                      Number(job.alc || 0) +
+                      Number(job.rba || 0) +
+                      Number(job.ews || 0) +
+                      Number(job.other || 0)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </Section>
+        )}
 
         <Section title="Age Limit">
           <table className="w-full text-sm border rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition">
