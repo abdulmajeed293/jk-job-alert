@@ -54,6 +54,30 @@ export default function Home() {
 
   const [latestJobs, setLatestJobs] = useState<Job[]>([]);
 
+
+  interface Category {
+    id: number;
+    name: string;
+    slug: string;
+  }
+
+  const [categories, setCategories] = useState<Category[]>([]);
+
+
+
+useEffect(() => {
+  const fetchCategories = async () => {
+    try {
+      const res = await api.get<Category[]>("/categories");
+      setCategories(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  fetchCategories();
+}, []);
+
   // Function to fetch jobs (used by button & real-time effect)
   const fetchJobs = async (searchTerm: string) => {
     if (!searchTerm.trim() && !activeCategory) {
@@ -320,28 +344,13 @@ export default function Home() {
         </h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-5">
-          {[
-            { name: "JKSSB", color: "from-blue-500 to-blue-700" },
-            { name: "Police", color: "from-red-500 to-red-700" },
-            { name: "Army", color: "from-purple-500 to-purple-700" },
-            { name: "JKPSC", color: "from-yellow-500 to-orange-500" },
-            { name: "Forest", color: "from-emerald-500 to-emerald-700" },
-            { name: "Revenue Dept", color: "from-cyan-500 to-cyan-700" },
-            { name: "Education Dept", color: "from-indigo-500 to-indigo-700" },
-            { name: "Health Dept", color: "from-teal-500 to-teal-700" },
-            { name: "PWD And Engineering", color: "from-sky-500 to-sky-700" },
-            { name: "Municipal Jobs", color: "from-lime-500 to-lime-700" },
-            { name: "Bank Jobs", color: "from-amber-500 to-amber-700" },
-            { name: "University Jobs", color: "from-violet-500 to-violet-700" },
-          ].map((item) => (
+          {categories.map((item) => (
             <Link
-              href={`/category/${item.name.toLowerCase().replace(/\s+/g, "-")}`}
-              key={item.name}
+              href={`/category/${item.slug}`}
+              key={item.id}
               className="group bg-white border border-gray-200/70 rounded-xl p-5 text-center shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer block"
             >
-              <div
-                className={`mx-auto mb-3 h-12 w-12 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center text-white font-bold text-lg`}
-              >
+              <div className="mx-auto mb-3 h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-lg">
                 {item.name[0]}
               </div>
 
