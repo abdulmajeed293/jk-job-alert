@@ -353,7 +353,7 @@ export default function Home() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-5">
           {categories.map((item) => (
             <Link
-              href={`/category/${item.slug}?latest=true`}
+              href={`/category/${item.slug}`}
               key={item.id}
               className="group bg-white border border-gray-200/70 rounded-xl p-5 text-center shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer block"
             >

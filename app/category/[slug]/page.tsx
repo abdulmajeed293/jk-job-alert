@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import api from "@/app/utils/api";
 import JobCard from "@/components/JobCard";
 import { Job } from "@/types/job";
@@ -57,28 +57,14 @@ export default function CategoryPage() {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const searchParams = useSearchParams();
-  const showLatest = searchParams.get("latest") === "true";
-
   useEffect(() => {
     const fetchCategoryJobs = async () => {
       try {
-        let res;
+        const res = await api.get<RawJob[]>("/jobs", {
+          params: { category },
+        });
 
-        if (showLatest) {
-          // Fetch all jobs and take latest 10
-          res = await api.get<RawJob[]>("/jobs");
-        } else {
-          // Normal category fetch
-          res = await api.get<RawJob[]>("/jobs", {
-            params: { category },
-          });
-        }
-
-        // If latest, slice top 10 jobs
-        const data = showLatest ? res.data.slice(0, 10) : res.data;
-
-        const mapped: Job[] = data.map((j) => ({
+        const mapped: Job[] = res.data.map((j) => ({
           id: j.id,
           title: j.title,
           introduction: j.introduction,
@@ -128,7 +114,7 @@ export default function CategoryPage() {
     };
 
     fetchCategoryJobs();
-  }, [category, showLatest]);
+  }, [category]);
 
   const formatCategoryTitle = (slug: string) => {
     const formatted = slug
