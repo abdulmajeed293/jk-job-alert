@@ -56,7 +56,6 @@ export default function Home() {
 
   const [latestJobs, setLatestJobs] = useState<Job[]>([]);
 
-
   interface Category {
     id: number;
     name: string;
@@ -65,21 +64,29 @@ export default function Home() {
 
   const [categories, setCategories] = useState<Category[]>([]);
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await api.get<RawJob[]>("/jobs"); // fetch all jobs
+        const allJobs = res.data;
 
+        // Extract unique category names from jobs
+        const uniqueCategories = Array.from(
+          new Set(allJobs.map((job) => job.category_name)),
+        ).map((name, index) => ({
+          id: index + 1, // unique id for mapping
+          name,
+          slug: name.toLowerCase().replace(/\s+/g, "-"), // slug for URL
+        }));
 
-useEffect(() => {
-  const fetchCategories = async () => {
-    try {
-      const res = await api.get<Category[]>("/categories");
-      setCategories(res.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+        setCategories(uniqueCategories);
+      } catch (err) {
+        console.error("Error fetching categories:", err);
+      }
+    };
 
-  fetchCategories();
-}, []);
-
+    fetchCategories();
+  }, []);
   // Function to fetch jobs (used by button & real-time effect)
   const fetchJobs = async (searchTerm: string) => {
     if (!searchTerm.trim() && !activeCategory) {
