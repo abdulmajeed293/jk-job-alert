@@ -251,7 +251,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       {/* Latest Jobs Vertical Ticker */}
       <section className="bg-gray-50 py-16">
         <div className="max-w-6xl mx-auto px-4">
@@ -300,12 +299,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+      */
       {/* Show search results */}
       {loading && (
         <p className="text-center p-10 text-gray-500">Loading jobs...</p>
       )}
-
       {!loading && query.trim() !== "" && (
         <>
           {jobs.length > 0 ? (
@@ -346,7 +344,6 @@ export default function Home() {
           )}
         </>
       )}
-
       {/* Categories */}
       <div className="max-w-7xl mx-auto px-4 py-12">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
@@ -356,7 +353,7 @@ export default function Home() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-5">
           {categories.map((item) => (
             <Link
-              href={`/category/${item.slug}`}
+              href={`/category/${item.slug}?latest=true`}
               key={item.id}
               className="group bg-white border border-gray-200/70 rounded-xl p-5 text-center shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer block"
             >
