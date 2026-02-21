@@ -44,6 +44,8 @@ interface RawJob {
   obcal: string;
   pcpal: string;
   otheral: string;
+
+  category_name: string;
 }
 
 export default function Home() {
