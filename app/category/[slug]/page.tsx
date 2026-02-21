@@ -33,6 +33,7 @@ interface RawJob {
   other: string;
 
   totalMarks: string;
+  category_name: string;
 
   /* ================== Age limit ================== */
   omal: string;
@@ -85,6 +86,7 @@ export default function CategoryPage() {
           ews: j.ews || "0",
           other: j.other || "0",
           totalMarks: j.totalMarks,
+          category_name: j.category_name,
 
           omal: j.omal,
           scal: j.scal,

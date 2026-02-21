@@ -107,6 +107,7 @@ useEffect(() => {
         omal: j.omal,
         totalMarks: j.totalMarks,
         syllabus_link: j.syllabus_link,
+        category_name: j.category_name,
 
         scal: j.scal,
         st1al: j.st1al,
