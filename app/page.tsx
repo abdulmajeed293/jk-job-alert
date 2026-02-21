@@ -361,11 +361,11 @@ export default function Home() {
                 {item.name[0]}
               </div>
 
-              <h3 className="font-semibold text-gray-800 group-hover:text-blue-600 transition">
+              {/*<h3 className="font-semibold text-gray-800 group-hover:text-blue-600 transition">
                 {item.name}
               </h3>
 
-              <p className="text-xs text-gray-500 mt-1">View latest updates</p>
+              <p className="text-xs text-gray-500 mt-1">View latest updates</p>*/}
             </Link>
           ))}
         </div>
