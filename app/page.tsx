@@ -353,24 +353,40 @@ export default function Home() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-5">
           {categories
             .filter((item) => item.name && item.name.trim() !== "")
-            .map((item) => (
-              <Link
-                href={`/category/${item.slug}`}
-                key={item.id}
-                className="group bg-white border border-gray-200/70 rounded-xl p-5 text-center shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer block"
-              >
-                <div className="mx-auto mb-3 h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-lg">
-                  {item.name[0]}
-                </div>
+            .map((item, index) => {
+              const colors = [
+                "from-blue-500 to-blue-700",
+                "from-green-500 to-green-700",
+                "from-red-500 to-red-700",
+                "from-purple-500 to-purple-700",
+                "from-yellow-500 to-yellow-700",
+                "from-pink-500 to-pink-700",
+                "from-indigo-500 to-indigo-700",
+                "from-teal-500 to-teal-700",
+              ];
 
-                <h3 className="font-semibold text-gray-800 group-hover:text-blue-600 transition">
-                  {item.name}
-                </h3>
-                <p className="text-xs text-gray-500 mt-1">
-                  View latest updates
-                </p>
-              </Link>
-            ))}
+              return (
+                <Link
+                  href={`/category/${item.slug}`}
+                  key={item.id}
+                  className="group bg-white border border-gray-200/70 rounded-xl p-5 text-center shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer block"
+                >
+                  <div
+                    className={`mx-auto mb-3 h-12 w-12 rounded-full bg-gradient-to-br ${colors[index % colors.length]} flex items-center justify-center text-white font-bold text-lg`}
+                  >
+                    {item.name[0]}
+                  </div>
+
+                  <h3 className="font-semibold text-gray-800 group-hover:text-blue-600 transition">
+                    {item.name}
+                  </h3>
+
+                  <p className="text-xs text-gray-500 mt-1">
+                    View latest updates
+                  </p>
+                </Link>
+              );
+            })}
         </div>
       </div>
     </section>
