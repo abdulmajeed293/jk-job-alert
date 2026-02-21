@@ -363,10 +363,6 @@ export default function Home() {
               <div className="mx-auto mb-3 h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-lg">
                 {item.name[0]}
               </div>
-
-              <h3 className="font-semibold text-gray-800 group-hover:text-blue-600 transition">
-                {item.name}
-              </h3>
             </Link>
           ))}
         </div>
