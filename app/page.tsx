@@ -348,6 +348,7 @@ export default function Home() {
       )}
 
       {/* Categories */}
+      
       <div className="max-w-7xl mx-auto px-4 py-12">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
           Browse Jobs by Category
@@ -355,10 +356,9 @@ export default function Home() {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-5">
           {categories.map((item) => (
-            <Link
-              href={`/category/${item.slug}`}
+            <div
               key={item.id}
-              className="group bg-white border border-gray-200/70 rounded-xl p-5 text-center shadow-sm hover:shadow-lg hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer block"
+              className="group bg-white border border-gray-200/70 rounded-xl p-5 text-center shadow-sm hover:shadow-lg transition-all duration-300"
             >
               <div className="mx-auto mb-3 h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-lg">
                 {item.name[0]}
@@ -368,8 +368,8 @@ export default function Home() {
                 {item.name}
               </h3>
 
-              <p className="text-xs text-gray-500 mt-1">View latest updates</p>
-            </Link>
+              {/* Removed "View latest updates" text */}
+            </div>
           ))}
         </div>
       </div>
