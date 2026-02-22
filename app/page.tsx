@@ -258,7 +258,7 @@ export default function Home() {
       {!loading && query.trim() !== "" && (
         <>
           {jobs.length > 0 ? (
-            <div className="max-w-7xl mx-auto px-4 pb-16">
+            <div className="max-w-7xl mx-auto px-4 pb-16 mt-10">
               <h2 className="text-2xl font-bold mb-6 text-gray-800">
                 {activeCategory ? `${activeCategory} Jobs` : "Search Results"}
               </h2>
