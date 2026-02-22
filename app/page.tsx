@@ -264,6 +264,53 @@ export default function Home() {
             </p>
           </div>
 
+          {/* Show search results */}
+          {loading && (
+            <p className="text-center p-10 text-gray-500">Loading jobs...</p>
+          )}
+          {!loading && query.trim() !== "" && (
+            <>
+              {jobs.length > 0 ? (
+                <div className="max-w-7xl mx-auto px-4 pb-16">
+                  <h2 className="text-2xl font-bold mb-6 text-gray-800">
+                    {activeCategory
+                      ? `${activeCategory} Jobs`
+                      : "Search Results"}
+                  </h2>
+
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {jobs.map((job) => (
+                      <JobCard key={job.id} job={job} />
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="max-w-3xl mx-auto px-6 py-16 bg-white border border-gray-200 rounded-2xl shadow-lg text-center flex flex-col items-center gap-4">
+                  {/* Info Icon */}
+                  <div className="w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 text-2xl font-bold">
+                    ℹ️
+                  </div>
+
+                  <p className="text-2xl font-semibold text-gray-800">
+                    No jobs found
+                  </p>
+
+                  <p className="text-gray-500 text-center">
+                    Try searching with different keywords, department names, or
+                    clear the search box to see all jobs.
+                  </p>
+
+                  <button
+                    onClick={() => setQuery("")}
+                    className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-xl shadow hover:bg-blue-700 transition"
+                  >
+                    Clear Search
+                  </button>
+                </div>
+              )}
+            </>
+          )}
+
           {/* Ticker Box */}
           <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-6">
             <div className="relative h-56 overflow-hidden">
@@ -300,50 +347,6 @@ export default function Home() {
         </div>
       </section>
       */
-      {/* Show search results */}
-      {loading && (
-        <p className="text-center p-10 text-gray-500">Loading jobs...</p>
-      )}
-      {!loading && query.trim() !== "" && (
-        <>
-          {jobs.length > 0 ? (
-            <div className="max-w-7xl mx-auto px-4 pb-16">
-              <h2 className="text-2xl font-bold mb-6 text-gray-800">
-                {activeCategory ? `${activeCategory} Jobs` : "Search Results"}
-              </h2>
-
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {jobs.map((job) => (
-                  <JobCard key={job.id} job={job} />
-                ))}
-              </div>
-            </div>
-          ) : (
-            <div className="max-w-3xl mx-auto px-6 py-16 bg-white border border-gray-200 rounded-2xl shadow-lg text-center flex flex-col items-center gap-4">
-              {/* Info Icon */}
-              <div className="w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 text-2xl font-bold">
-                ℹ️
-              </div>
-
-              <p className="text-2xl font-semibold text-gray-800">
-                No jobs found
-              </p>
-
-              <p className="text-gray-500 text-center">
-                Try searching with different keywords, department names, or
-                clear the search box to see all jobs.
-              </p>
-
-              <button
-                onClick={() => setQuery("")}
-                className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-xl shadow hover:bg-blue-700 transition"
-              >
-                Clear Search
-              </button>
-            </div>
-          )}
-        </>
-      )}
       {/* Categories */}
       <div className="max-w-7xl mx-auto px-4 py-12">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
