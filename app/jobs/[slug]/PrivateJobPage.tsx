@@ -96,9 +96,9 @@ export default function PrivateJobPage({ job }: { job: Job }) {
             <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
               Private Job
             </span>
-            <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full">
-              {job.applyMode}
-            </span>
+            {/*<span className="bg-green-100 text-green-700 px-3 py-1 rounded-full">
+                {job.applyMode}
+              </span>*/}
             {job.application?.salary && (
               <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full">
                 {job.application.salary}
