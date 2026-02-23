@@ -484,18 +484,18 @@ export default function JobDetailPage() {
             {job.links.admitCard && (
               <a href={job.links.admitCard}>Download Admit Card</a>
             )}
-
-            {/* FREQUENTLY ASKED QUESTIONS */}
-            {job.faq && (
-              <Section title="Frequently Asked Questions (FAQ)">
-                <div
-                  className="prose max-w-none text-gray-800 [&_ul]:list-disc [&_ul]:ml-6"
-                  dangerouslySetInnerHTML={{ __html: job.faq }}
-                />
-              </Section>
-            )}
           </div>
         </Section>
+
+        {/* FREQUENTLY ASKED QUESTIONS */}
+        {job.faq && (
+          <Section title="Frequently Asked Questions (FAQ)">
+            <div
+              className="prose max-w-none text-gray-800 [&_ul]:list-disc [&_ul]:ml-6"
+              dangerouslySetInnerHTML={{ __html: job.faq }}
+            />
+          </Section>
+        )}
 
         <p className="text-xs text-gray-400 text-center mt-5">
           Disclaimer: JK Career Updates is not affiliated with any government
