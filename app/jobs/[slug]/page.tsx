@@ -218,7 +218,7 @@ export default function JobDetailPage() {
             <h2 className="text-xl font-bold mb-4">{job.title} Overview</h2>
 
             <div
-              className="prose max-w-none text-gray-800"
+              className="prose max-w-none text-gray-800 [&_ul]:list-disc [&_ul]:ml-6"
               dangerouslySetInnerHTML={{ __html: job.introduction }}
             />
           </div>
