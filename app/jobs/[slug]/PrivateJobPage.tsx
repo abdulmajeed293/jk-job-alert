@@ -173,7 +173,7 @@ export default function PrivateJobPage({ job }: { job: Job }) {
             <a
               href={job.links.apply}
               target="_blank"
-              className="text-blue-600 font-semibold"
+              className="text-blue-600 font-semibold mb-10"
             >
               Apply link →
             </a>
