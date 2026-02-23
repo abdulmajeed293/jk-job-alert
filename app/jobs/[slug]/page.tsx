@@ -487,7 +487,7 @@ export default function JobDetailPage() {
 
             {/* FREQUENTLY ASKED QUESTIONS */}
             {job.faq && (
-              <Section title="Frequently Asked Questions">
+              <Section title="Frequently Asked Questions (FAQ)">
                 <div
                   className="prose max-w-none text-gray-800 [&_ul]:list-disc [&_ul]:ml-6"
                   dangerouslySetInnerHTML={{ __html: job.faq }}
