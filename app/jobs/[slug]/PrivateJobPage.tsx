@@ -175,7 +175,7 @@ export default function PrivateJobPage({ job }: { job: Job }) {
               target="_blank"
               className="text-blue-600 font-semibold"
             >
-              Apply on Company Website →
+              Apply link →
             </a>
           )}
         </Section>
