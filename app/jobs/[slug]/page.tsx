@@ -9,6 +9,7 @@ import PrivateJobPage from "./PrivateJobPage";
 /* ---------------- Type Definitions ---------------- */
 interface Job {
   id: number;
+  faq: string;
   slug: string;
   title: string;
   introduction: string;
@@ -482,6 +483,16 @@ export default function JobDetailPage() {
 
             {job.links.admitCard && (
               <a href={job.links.admitCard}>Download Admit Card</a>
+            )}
+
+            {/* FREQUENTLY ASKED QUESTIONS */}
+            {job.faq && (
+              <Section title="Frequently Asked Questions">
+                <div
+                  className="prose max-w-none text-gray-800 [&_ul]:list-disc [&_ul]:ml-6"
+                  dangerouslySetInnerHTML={{ __html: job.faq }}
+                />
+              </Section>
             )}
           </div>
         </Section>
