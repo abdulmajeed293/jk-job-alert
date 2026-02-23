@@ -178,6 +178,12 @@ export default function PrivateJobPage({ job }: { job: Job }) {
               Apply link →
             </a>
           )}
+          <p>
+            <b>Source:</b> Public Job Advertisement.
+          </p>
+          <p>
+            <b>Note:</b> Candidates should verify job details before applying.
+          </p>
         </Section>
 
         <p className="text-xs text-gray-400 text-center">
