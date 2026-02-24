@@ -46,8 +46,13 @@ interface RawJob {
   otheral: string;
 
   category_name: string;
-    notificationo?: string;
- 
+
+  linkse: {
+    apply: string;
+    notification: string;
+    official: string;
+    admitCard: string;
+  };
 }
 
 export default function Home() {
@@ -139,7 +144,7 @@ export default function Home() {
         other: j.other || "0",
 
         links: {
-          notificationo: j.notificationo || "",
+          
           apply: j.applyLink || "",
           notification: j.notificationLink || "",
           official: j.officialLink || "",
@@ -206,7 +211,7 @@ export default function Home() {
             other: j.other || "0",
 
             links: {
-              notificationo: j.notificationo || "",
+              
               apply: j.applyLink || "",
               notification: j.notificationLink || "",
               official: j.officialLink || "",
@@ -267,10 +272,15 @@ export default function Home() {
 
             links: {
               apply: j.applyLink || "",
-              notificationo: j.notificationo,
+            
               notification: j.notificationLink || "",
               official: j.officialLink || "",
             },
+            linkse: {
+    
+    notification: j.linkse.notification,
+    
+  },
           }));
 
         setLatestNotifications(mapped);
