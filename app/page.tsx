@@ -55,6 +55,7 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState("");
 
   const [latestJobs, setLatestJobs] = useState<Job[]>([]);
+  const [latestNotifications, setLatestNotifications] = useState<Job[]>([]);
 
   interface Category {
     id: number;
@@ -215,6 +216,65 @@ export default function Home() {
     fetchLatestJobs();
   }, []);
 
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      try {
+        const res = await api.get<RawJob[]>("/jobs");
+
+        const mapped = res.data
+          .sort((a, b) => b.id - a.id)
+          .slice(0, 10)
+          .map((j: RawJob) => ({
+            id: j.id,
+            title: j.title,
+            introduction: j.introduction,
+            company: j.company,
+            type: j.type,
+            location: j.location,
+            department: j.department,
+            slug: j.slug,
+            totalPosts: j.totalPosts,
+            applyMode: j.applyMode,
+            omal: j.omal,
+            totalMarks: j.totalMarks,
+            syllabus_link: j.syllabus_link,
+
+            scal: j.scal,
+            st1al: j.st1al,
+            st2al: j.st2al,
+            rbaal: j.rbaal,
+            alcibal: j.alcibal,
+            ewsal: j.ewsal,
+            obcal: j.obcal,
+            pcpal: j.pcpal,
+            otheral: j.otheral,
+
+            om: j.om || "0",
+            obc: j.obc || "0",
+            sc: j.sc || "0",
+            st1: j.st1 || "0",
+            st2: j.st2 || "0",
+            alc: j.alc || "0",
+            rba: j.rba || "0",
+            ews: j.ews || "0",
+            other: j.other || "0",
+
+            links: {
+              apply: j.applyLink || "",
+              notification: j.notificationLink || "",
+              official: j.officialLink || "",
+            },
+          }));
+
+        setLatestNotifications(mapped);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchNotifications();
+  }, []);
+
   return (
     <section className="bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
@@ -302,44 +362,44 @@ export default function Home() {
       {/* Latest Jobs Vertical Ticker */}
       <section className="bg-gray-50 py-16">
         <div className="max-w-6xl mx-auto px-4">
-          {/* Section Header */}
-          <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-              Latest Job Updates
-            </h2>
-            <p className="text-gray-500 text-sm mt-2">
-              Recently added government and private job notifications
-            </p>
-          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Latest Jobs */}
 
-          {/* Ticker Box */}
-          <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-6">
-            <div className="relative h-56 overflow-hidden">
-              <div className="animate-scrollUp space-y-5">
+            <div className="bg-white rounded-2xl shadow-md border p-6">
+              <h2 className="text-xl font-bold mb-4">Latest Jobs</h2>
+
+              <div className="space-y-4">
                 {latestJobs.map((job) => (
                   <Link
                     key={job.id}
                     href={`/jobs/${job.slug}`}
-                    className="flex justify-between items-center border-b border-gray-100 pb-4 last:border-none hover:bg-gray-50 px-3 py-2 rounded-lg transition"
+                    className="block border-b pb-3 hover:text-blue-600"
                   >
-                    <div className="flex-1">
-                      <p className="font-semibold text-gray-800 hover:text-blue-600 transition">
-                        {job.title}
-                      </p>
-                      <p className="text-sm text-gray-500 mt-1">
-                        {job.company}
-                      </p>
-                    </div>
+                    <p className="font-medium">{job.title}</p>
 
-                    <span
-                      className={`text-xs font-medium px-3 py-1 rounded-full ${
-                        job.type === "Government"
-                          ? "bg-green-100 text-green-700"
-                          : "bg-blue-100 text-blue-700"
-                      }`}
-                    >
-                      {job.type}
-                    </span>
+                    <p className="text-sm text-gray-500">{job.company}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Latest Notifications */}
+
+            <div className="bg-white rounded-2xl shadow-md border p-6">
+              <h2 className="text-xl font-bold mb-4">Latest Notifications</h2>
+
+              <div className="space-y-4">
+                {latestNotifications.map((job) => (
+                  <Link
+                    key={job.id}
+                    href={job.notificationLink || `/jobs/${job.slug}`}
+                    className="block border-b pb-3 hover:text-red-600"
+                  >
+                    <p className="font-medium">{job.title}</p>
+
+                    <p className="text-sm text-gray-500">
+                      Official Notification
+                    </p>
                   </Link>
                 ))}
               </div>
@@ -347,7 +407,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Categories */}
       <div className="max-w-7xl mx-auto px-4 py-12">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
