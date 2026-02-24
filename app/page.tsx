@@ -457,7 +457,7 @@ export default function Home() {
                       </div>
 
                       <span className="text-xs font-medium px-3 py-1 rounded-full bg-red-100 text-red-700">
-                        PDF{job.company}
+                        {job.company}
                       </span>
                     </Link>
                   ))}
