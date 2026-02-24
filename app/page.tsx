@@ -273,11 +273,10 @@ export default function Home() {
 
             links: {
               apply: j.applyLink || "",
-            
+
               notification: j.notificationLink || "",
               official: j.officialLink || "",
             },
-            
           }));
 
         setLatestNotifications(mapped);
@@ -449,7 +448,7 @@ export default function Home() {
                     >
                       <div className="flex-1">
                         <p className="font-semibold text-gray-800 hover:text-blue-600 transition">
-                          {job.notification_title}
+                          {job.notification_title || job.title}
                         </p>
 
                         <p className="text-sm text-gray-500 mt-1">
