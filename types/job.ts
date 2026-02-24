@@ -51,7 +51,11 @@ export interface Job {
   obcal: string; 
   pcpal: string;
   otheral: string;
-
+ links?: {
+    apply: string;
+    notification: string;
+    official: string;
+  }
 
 
   // optional fallback for extra fields from backend
