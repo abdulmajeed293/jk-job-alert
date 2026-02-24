@@ -419,16 +419,18 @@ export default function Home() {
             {/* Latest Notifications */}
 
             <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-6">
-              <h3 className="text-xl font-bold mb-4 text-center">
-                Latest Notifications
-              </h3>
+              <div className="border-b pb-3 mb-4 text-center">
+                <h3 className="text-xl font-bold text-gray-800">
+                  Latest Notifications
+                </h3>
+              </div>
 
               <div className="relative h-56 overflow-hidden">
                 <div className="animate-scrollUp space-y-5">
                   {latestNotifications.map((job) => (
                     <Link
                       key={job.id}
-                      href={job.notificationLink || `/jobs/${job.slug}`}
+                      href={job.notification || `/jobs/${job.slug}`}
                       className="flex justify-between items-center border-b border-gray-100 pb-4 last:border-none hover:bg-gray-50 px-3 py-2 rounded-lg transition"
                     >
                       <div className="flex-1">
