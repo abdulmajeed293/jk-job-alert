@@ -46,7 +46,7 @@ interface RawJob {
   otheral: string;
 
   category_name: string;
-    notification: string;
+    notificationo?: string;
  
 }
 
@@ -137,8 +137,9 @@ export default function Home() {
         rba: j.rba || "0",
         ews: j.ews || "0",
         other: j.other || "0",
-        notification: j.notification,
+
         links: {
+          notificationo: j.notificationo || "",
           apply: j.applyLink || "",
           notification: j.notificationLink || "",
           official: j.officialLink || "",
@@ -203,8 +204,9 @@ export default function Home() {
             rba: j.rba || "0",
             ews: j.ews || "0",
             other: j.other || "0",
-            notification: j.notification,
+
             links: {
+              notificationo: j.notificationo || "",
               apply: j.applyLink || "",
               notification: j.notificationLink || "",
               official: j.officialLink || "",
@@ -242,7 +244,6 @@ export default function Home() {
             omal: j.omal,
             totalMarks: j.totalMarks,
             syllabus_link: j.syllabus_link,
-            notification: j.notification,
 
             scal: j.scal,
             st1al: j.st1al,
@@ -266,6 +267,7 @@ export default function Home() {
 
             links: {
               apply: j.applyLink || "",
+              notificationo: j.notificationo,
               notification: j.notificationLink || "",
               official: j.officialLink || "",
             },
