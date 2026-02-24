@@ -379,7 +379,9 @@ export default function Home() {
             {/* Latest Jobs */}
 
             <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-6">
-              <h3 className="text-xl font-bold mb-4">Latest Jobs</h3>
+              <h3 className="text-xl font-bold mb-4 text-center">
+                Latest Jobs
+              </h3>
 
               <div className="relative h-56 overflow-hidden">
                 <div className="animate-scrollUp space-y-5">
@@ -417,7 +419,9 @@ export default function Home() {
             {/* Latest Notifications */}
 
             <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-6">
-              <h3 className="text-xl font-bold mb-4">Latest Notifications</h3>
+              <h3 className="text-xl font-bold mb-4 text-center">
+                Latest Notifications
+              </h3>
 
               <div className="relative h-56 overflow-hidden">
                 <div className="animate-scrollUp space-y-5">
