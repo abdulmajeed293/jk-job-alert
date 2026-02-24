@@ -39,6 +39,7 @@ export interface Job {
   rba: string;
   ews: string;
   other: string;
+  notification_title?: string;
 
   /* ================== Age limit ================== */
   omal: string;

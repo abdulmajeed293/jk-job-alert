@@ -53,6 +53,7 @@ interface RawJob {
     official: string;
     admitCard: string;
   };
+  notification_title?: string;
 }
 
 export default function Home() {
@@ -123,6 +124,7 @@ export default function Home() {
         totalMarks: j.totalMarks,
         syllabus_link: j.syllabus_link,
         category_name: j.category_name,
+        notification_title: j.notification_title || "",
 
         scal: j.scal,
         st1al: j.st1al,
@@ -144,7 +146,6 @@ export default function Home() {
         other: j.other || "0",
 
         links: {
-          
           apply: j.applyLink || "",
           notification: j.notificationLink || "",
           official: j.officialLink || "",
@@ -209,9 +210,9 @@ export default function Home() {
             rba: j.rba || "0",
             ews: j.ews || "0",
             other: j.other || "0",
+            notification_title: j.notification_title || "",
 
             links: {
-              
               apply: j.applyLink || "",
               notification: j.notificationLink || "",
               official: j.officialLink || "",
@@ -448,7 +449,7 @@ export default function Home() {
                     >
                       <div className="flex-1">
                         <p className="font-semibold text-gray-800 hover:text-blue-600 transition">
-                          {job.title}
+                          {job.notification_title}
                         </p>
 
                         <p className="text-sm text-gray-500 mt-1">
