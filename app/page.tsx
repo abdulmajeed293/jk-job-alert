@@ -276,11 +276,7 @@ export default function Home() {
               notification: j.notificationLink || "",
               official: j.officialLink || "",
             },
-            linkse: {
-    
-    notification: j.linkse.notification,
-    
-  },
+            
           }));
 
         setLatestNotifications(mapped);
@@ -447,7 +443,7 @@ export default function Home() {
                   {latestNotifications.map((job) => (
                     <Link
                       key={job.id}
-                      href={job.notification || `/jobs/${job.slug}`}
+                      href={job.notificationLink || `/jobs/${job.slug}`}
                       className="flex justify-between items-center border-b border-gray-100 pb-4 last:border-none hover:bg-gray-50 px-3 py-2 rounded-lg transition"
                     >
                       <div className="flex-1">

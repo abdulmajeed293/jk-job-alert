@@ -28,6 +28,7 @@ export interface Job {
   notificationLink?: string;
   officialLink?: string;
   status?: "active" | "expired";
+  
 
   om: string;
   obc: string;
