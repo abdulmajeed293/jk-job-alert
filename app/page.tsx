@@ -379,9 +379,9 @@ export default function Home() {
             {/* Latest Jobs */}
 
             <div className="bg-white rounded-2xl shadow-md border border-gray-200 p-6">
-              <h3 className="text-xl font-bold mb-4 text-center">
-                Latest Jobs
-              </h3>
+              <div className="border-b pb-3 mb-4 text-center">
+                <h3 className="text-xl font-bold text-gray-800">Latest Jobs</h3>
+              </div>
 
               <div className="relative h-56 overflow-hidden">
                 <div className="animate-scrollUp space-y-5">
