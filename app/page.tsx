@@ -447,7 +447,7 @@ export default function Home() {
                       className="flex justify-between items-center border-b border-gray-100 pb-4 last:border-none hover:bg-gray-50 px-3 py-2 rounded-lg transition"
                     >
                       <div className="flex-1">
-                        <p className="font-semibold text-gray-800 hover:text-red-600 transition">
+                        <p className="font-semibold text-gray-800 hover:text-blue-600 transition">
                           {job.title}
                         </p>
 
