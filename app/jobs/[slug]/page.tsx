@@ -219,18 +219,18 @@ export default function JobDetailPage() {
             <h2 className="text-xl font-bold mb-4">{job.title} Overview</h2>
 
             <div
-              className="prose max-w-none text-gray-800
+              className="prose max-w-none text-white
 
               [&_ul]:list-disc [&_ul]:ml-6
 
               [&_table]:w-full
               [&_table]:border
-              [&_table]:border-blue-300
+              [&_table]:border-blue-500
               [&_table]:rounded-lg
               [&_table]:overflow-hidden
               [&_table]:shadow-sm
 
-              [&_th]:bg-blue-100
+              [&_th]:bg-blue-500
               [&_th]:text-left
               [&_th]:font-semibold
               [&_th]:p-3
@@ -239,10 +239,10 @@ export default function JobDetailPage() {
               [&_td]:p-3
               [&_td]:border-b
 
-              [&_tr:nth-child(even)]:bg-blue-50
-              [&_tr:hover]:bg-blue-100
+              [&_tr:nth-child(even)]:bg-blue-500
+              [&_tr:hover]:bg-gray-100
 
-              [&_thead]:bg-blue-100"
+              [&_thead]:bg-blue-500"
               dangerouslySetInnerHTML={{ __html: job.introduction }}
             />
           </div>
