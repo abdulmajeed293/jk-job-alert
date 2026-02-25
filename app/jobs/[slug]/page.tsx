@@ -465,7 +465,7 @@ export default function JobDetailPage() {
 
             <h4 className="font-semibold mt-4">Exam Pattern</h4>
             <div className="w-full h-[2px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full mb-3"></div>
-            <table className="w-full text-sm border rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition">
+            <table className="w-full text-sm border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
               <tbody>
                 {job.exam.pattern.map((p) => (
                   <tr
