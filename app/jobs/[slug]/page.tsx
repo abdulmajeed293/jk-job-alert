@@ -470,14 +470,14 @@ export default function JobDetailPage() {
                 {job.exam.pattern.map((p) => (
                   <tr
                     key={p.subject}
-                    className="border-t hover:bg-blue-200 transition"
+                    className="border-t hover:bg-gray-50 transition"
                   >
                     <td className="p-3">{p.subject}</td>
                     <td className="p-3 text-right">{p.marks}</td>
                   </tr>
                 ))}
                 {/* 🔥 Total row (auto from backend) */}
-                <tr className="border-t bg-blue-500 font-bold">
+                <tr className="border-t bg-blue-600 text-white font-bold">
                   <td className="p-3 text-left">Total Marks</td>
                   <td className="p-3 text-right">{job.totalMarks}</td>
                 </tr>
