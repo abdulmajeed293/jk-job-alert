@@ -219,14 +219,30 @@ export default function JobDetailPage() {
             <h2 className="text-xl font-bold mb-4">{job.title} Overview</h2>
 
             <div
-              className="prose max-w-none text-gray-800 
+              className="prose max-w-none text-gray-800
+
               [&_ul]:list-disc [&_ul]:ml-6
+
               [&_table]:w-full
               [&_table]:border
-              [&_th]:border [&_td]:border
-              [&_th]:p-2 [&_td]:p-2
+              [&_table]:border-gray-300
+              [&_table]:rounded-lg
+              [&_table]:overflow-hidden
+              [&_table]:shadow-sm
+
               [&_th]:bg-gray-100
-              [&_table]:border-gray-300"
+              [&_th]:text-left
+              [&_th]:font-semibold
+              [&_th]:p-3
+              [&_th]:border-b
+
+              [&_td]:p-3
+              [&_td]:border-b
+
+              [&_tr:nth-child(even)]:bg-gray-50
+              [&_tr:hover]:bg-gray-100
+
+              [&_thead]:bg-gray-100"
               dangerouslySetInnerHTML={{ __html: job.introduction }}
             />
           </div>
