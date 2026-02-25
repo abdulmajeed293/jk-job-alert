@@ -477,7 +477,7 @@ export default function JobDetailPage() {
                   </tr>
                 ))}
                 {/* 🔥 Total row (auto from backend) */}
-                <tr className="border-t bg-gray-100 font-bold">
+                <tr className="border-t bg-blue-500 font-bold">
                   <td className="p-3 text-left">Total Marks</td>
                   <td className="p-3 text-right">{job.totalMarks}</td>
                 </tr>
