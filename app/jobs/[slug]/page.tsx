@@ -239,7 +239,7 @@ export default function JobDetailPage() {
               [&_td]:p-3
               [&_td]:border-b
 
-              [&_tr:nth-child(even)]:bg-blue-50
+              [&_tr:nth-child(even)]:bg-blue-500
               [&_tr:hover]:bg-blue-100
 
               [&_thead]:bg-blue-100"
