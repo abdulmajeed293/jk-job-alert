@@ -301,7 +301,7 @@ export default function JobDetailPage() {
           0 && (
           <Section title="Vacancy Details">
             <table className="w-full text-sm border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
-              <thead className="bg-gray-100">
+              <thead className="bg-blue-600 text-white">
                 <tr>
                   <th className="p-3 text-left">Category</th>
                   <th className="p-3 text-right">Posts</th>
@@ -349,7 +349,7 @@ export default function JobDetailPage() {
                     </td>
                   </tr>
                 )}
-                <tr className="border-t bg-gray-100 font-bold">
+                <tr className="border-t bg-blue-600 text-white font-bold">
                   <td className="p-3">Total Posts</td>
                   <td className="p-3 text-right">
                     {Number(job.om || 0) +
@@ -370,7 +370,7 @@ export default function JobDetailPage() {
 
         <Section title="Age Limit">
           <table className="w-full text-sm border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
-            <thead className="bg-gray-100">
+            <thead className="bg-blue-600 text-white">
               <tr>
                 <th className="p-3 text-left">Category</th>
                 <th className="p-3 text-right">Age</th>
