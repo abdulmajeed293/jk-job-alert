@@ -167,7 +167,7 @@ export default function JobDetailPage() {
     <article className="bg-gray-50 min-h-screen py-10">
       <div className="max-w-6xl mx-auto px-4 grid gap-8">
         {/* HERO CARD */}
-        <div className="bg-white rounded-3xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all duration-300">
+        <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 hover:shadow-xl transition-all duration-300">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
             {job.title}
           </h1>
@@ -215,7 +215,7 @@ export default function JobDetailPage() {
 
         {/* INTRODUCTION */}
         {job.introduction && (
-          <div className="bg-white rounded-3xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300">
+          <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300">
             <h2 className="text-xl font-bold mb-4">{job.title} Overview</h2>
 
             <div
@@ -300,7 +300,7 @@ export default function JobDetailPage() {
           Number(job.other || 0) >
           0 && (
           <Section title="Vacancy Details">
-            <table className="w-full text-sm border rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition">
+            <table className="w-full text-sm border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
               <thead className="bg-gray-100">
                 <tr>
                   <th className="p-3 text-left">Category</th>
@@ -369,7 +369,7 @@ export default function JobDetailPage() {
         )}
 
         <Section title="Age Limit">
-          <table className="w-full text-sm border rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition">
+          <table className="w-full text-sm border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
             <thead className="bg-gray-100">
               <tr>
                 <th className="p-3 text-left">Category</th>
@@ -538,7 +538,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-white rounded-3xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300">
+    <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300">
       <h2 className="text-lg font-bold border-b pb-2 mb-4">{title}</h2>
       {children}
     </div>
