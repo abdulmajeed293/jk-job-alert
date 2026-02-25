@@ -547,7 +547,7 @@ function Section({
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-3xl p-4 text-center shadow-lg hover:shadow-xl transition-all duration-300">
+    <div className="bg-white border border-gray-200 rounded-xl p-4 text-center shadow-lg hover:shadow-xl transition-all duration-300">
       <p className="text-xs text-gray-500">{label}</p>
       <p className="font-semibold text-sm mt-1">{value}</p>
     </div>
@@ -556,7 +556,7 @@ function Stat({ label, value }: { label: string; value: string }) {
 
 function KeyValue({ items }: { items: [string, string][] }) {
   return (
-    <ul className="bg-white border border-gray-200 rounded-3xl shadow-lg p-4 space-y-2 hover:shadow-xl transition-all duration-300">
+    <ul className="bg-white border border-gray-200 rounded-xl shadow-lg p-4 space-y-2 hover:shadow-xl transition-all duration-300">
       {items.map(([k, v], i) => (
         <li key={i} className="flex justify-between py-1">
           <span className="font-medium">{k}</span>
@@ -569,7 +569,7 @@ function KeyValue({ items }: { items: [string, string][] }) {
 
 function Info({ label, value }: { label: string; value: string }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-3xl p-4 text-center shadow-lg hover:shadow-xl transition-all duration-300">
+    <div className="bg-white border border-gray-200 rounded-xl p-4 text-center shadow-lg hover:shadow-xl transition-all duration-300">
       <p className="text-gray-500 text-xs">{label}</p>
       <p className="font-semibold">{value}</p>
     </div>
