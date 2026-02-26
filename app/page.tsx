@@ -290,7 +290,7 @@ export default function Home() {
 
     fetchNotifications();
   }, []);
-  if (loading) return <PremiumLoader />;
+  
 
   return (
     <section className="bg-gradient-to-b from-gray-50 to-white">
