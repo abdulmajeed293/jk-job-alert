@@ -5,6 +5,7 @@ import api from "@/app/utils/api"; // Axios instance
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import PrivateJobPage from "./PrivateJobPage";
+import PremiumLoader from "@/components/PremiumLoader";
 
 /* ---------------- Type Definitions ---------------- */
 interface Job {
@@ -130,12 +131,12 @@ export default function JobDetailPage() {
   }, [slug]);
 
   if (loading)
-    return <p className="p-10 text-center text-gray-500">Loading...</p>;
+    return <PremiumLoader />;
   if (!job)
-    return <p className="p-10 text-center text-gray-500">Job not found</p>;
+    return <PremiumLoader />;
 
   if (!job)
-    return <p className="p-10 text-center text-gray-500">Job not found</p>;
+    return <PremiumLoader />;
 
   if (job.type === "Private") {
     return <PrivateJobPage job={job} />;
