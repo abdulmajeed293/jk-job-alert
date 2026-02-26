@@ -5,6 +5,9 @@ import api from "@/app/utils/api";
 import JobCard from "@/components/JobCard";
 import { Job } from "@/types/job";
 import Link from "next/link";
+import PremiumLoader from "@/components/PremiumLoader";
+
+
 
 // Define type for raw backend job object
 interface RawJob {
@@ -287,6 +290,7 @@ export default function Home() {
 
     fetchNotifications();
   }, []);
+  if (loading) return <PremiumLoader />;
 
   return (
     <section className="bg-gradient-to-b from-gray-50 to-white">

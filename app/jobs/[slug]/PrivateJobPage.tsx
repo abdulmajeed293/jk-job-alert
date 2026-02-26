@@ -82,6 +82,8 @@ interface Job {
 }
 
 export default function PrivateJobPage({ job }: { job: Job }) {
+
+
   return (
     <article className="bg-gray-50 min-h-screen py-10">
       <div className="max-w-4xl mx-auto px-4 space-y-6">

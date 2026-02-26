@@ -6,6 +6,7 @@ import JobCard from "@/components/JobCard";
 import FeaturedJobsSlider from "@/components/FeaturedJobsSlider";
 // ❌ JobFilterSidebar removed
 import api from "@/app/utils/api";
+import PremiumLoader from "@/components/PremiumLoader";
 
 interface Job {
   id: number;
@@ -69,8 +70,7 @@ export default function PrivateJobsPage() {
     fetchJobs();
   }, []);
 
-  if (loading)
-    return <p className="text-center p-10 text-gray-500">Loading jobs...</p>;
+if (loading) if (loading) return <PremiumLoader />;
 
   return (
     <section className="bg-gray-50 min-h-screen">

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import JobCard from "@/components/JobCard";
 import FeaturedJobsSlider from "@/components/FeaturedJobsSlider";
 import api from "@/app/utils/api";
+import PremiumLoader from "@/components/PremiumLoader";
 
 interface Job {
   id: number;
@@ -92,50 +93,7 @@ export default function GovtJobsPage() {
     return () => window.removeEventListener("filters-change", fetchJobs);
   }, []);
 
-  if (loading)
-    return (
-      <section className="bg-gray-50 min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 py-10 animate-pulse">
-          {/* Heading skeleton */}
-          <div className="h-8 bg-gray-200 rounded w-72 mb-4"></div>
-          <div className="h-4 bg-gray-200 rounded w-96 mb-10"></div>
-
-          {/* Featured slider skeleton */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow p-6 mb-10">
-            <div className="h-6 bg-gray-200 rounded w-48 mb-4"></div>
-            <div className="flex gap-4 overflow-hidden">
-              {[...Array(3)].map((_, i) => (
-                <div
-                  key={i}
-                  className="min-w-[300px] h-40 bg-gray-200 rounded-xl"
-                ></div>
-              ))}
-            </div>
-          </div>
-
-          {/* Job cards skeleton grid */}
-          <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="bg-white border border-gray-200 rounded-xl shadow p-5"
-              >
-                <div className="h-5 bg-gray-200 rounded mb-3"></div>
-
-                <div className="h-4 bg-gray-200 rounded w-2/3 mb-2"></div>
-
-                <div className="flex gap-2 mt-4">
-                  <div className="h-6 w-16 bg-gray-200 rounded-full"></div>
-                  <div className="h-6 w-20 bg-gray-200 rounded-full"></div>
-                </div>
-
-                <div className="h-10 bg-gray-200 rounded-lg mt-5"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
+  if (loading) if (loading) return <PremiumLoader />;
 
   return (
     <section className="bg-gray-50 min-h-screen">
