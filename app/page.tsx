@@ -195,6 +195,7 @@ export default function Home() {
             omal: j.omal,
             totalMarks: j.totalMarks,
             syllabus_link: j.syllabus_link,
+            notification_title: j.notification_title || "",
             scal: j.scal,
             st1al: j.st1al,
             st2al: j.st2al,
@@ -213,7 +214,7 @@ export default function Home() {
             rba: j.rba || "0",
             ews: j.ews || "0",
             other: j.other || "0",
-            notification_title: j.notification_title || "",
+          
 
             links: {
               apply: j.applyLink || "",
