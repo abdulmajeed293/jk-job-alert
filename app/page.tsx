@@ -7,8 +7,6 @@ import { Job } from "@/types/job";
 import Link from "next/link";
 import PremiumLoader from "@/components/PremiumLoader";
 
-
-
 // Define type for raw backend job object
 interface RawJob {
   id: number;
@@ -214,7 +212,6 @@ export default function Home() {
             rba: j.rba || "0",
             ews: j.ews || "0",
             other: j.other || "0",
-          
 
             links: {
               apply: j.applyLink || "",
@@ -291,7 +288,6 @@ export default function Home() {
 
     fetchNotifications();
   }, []);
-  
 
   return (
     <section className="bg-gradient-to-b from-gray-50 to-white">
@@ -452,7 +448,7 @@ export default function Home() {
                       className="flex justify-between items-center border-b border-gray-100 pb-4 last:border-none hover:bg-gray-50 px-3 py-2 rounded-lg transition"
                     >
                       <div className="flex-1">
-                        <p className="font-semibold text-gray-800 hover:text-blue-600 transition">
+                        <p className="font-semibold text-gray-800 hover:text-blue-600 transition line-clamp-2">
                           {job.notification_title || job.title}
                         </p>
 
