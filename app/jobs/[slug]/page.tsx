@@ -117,7 +117,9 @@ export default function JobDetailPage() {
       try {
         // ✅ Call backend route for slug
         const res = await api.get<{ job: Job }>(`/jobs/slug/${slug}`);
-        setJob(res.data.job);
+        const latestJob = res.data.job;
+
+        setJob(latestJob);
       } catch (err) {
         console.error(err);
         setJob(null);
@@ -130,13 +132,10 @@ export default function JobDetailPage() {
     fetchJob();
   }, [slug]);
 
-  if (loading)
-    return <PremiumLoader />;
-  if (!job)
-    return <PremiumLoader />;
+  if (loading) return <PremiumLoader />;
+  if (!job) return <PremiumLoader />;
 
-  if (!job)
-    return <PremiumLoader />;
+  if (!job) return <PremiumLoader />;
 
   if (job.type === "Private") {
     return <PrivateJobPage job={job} />;
