@@ -177,8 +177,6 @@ export default function Home() {
         const res = await api.get<RawJob[]>("/jobs");
 
         const mapped = res.data
-          .sort((a, b) => b.id - a.id)
-          .slice(0, 10)
           .map((j: RawJob) => ({
             id: j.id,
             title: j.title,
@@ -218,7 +216,9 @@ export default function Home() {
               notification: j.notificationLink || "",
               official: j.officialLink || "",
             },
-          }));
+          }))
+          .sort((a, b) => b.id - a.id)
+          .slice(0, 10);
 
         setLatestJobs(mapped);
       } catch (err) {
