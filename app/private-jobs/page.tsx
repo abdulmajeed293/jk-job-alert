@@ -59,7 +59,10 @@ export default function PrivateJobsPage() {
       try {
         const res = await api.get<Job[]>("/jobs");
         const filtered = res.data.filter((job) => job.type === "Private");
-        setPvtJobs(filtered);
+       const sortedJobs = filtered.sort((a, b) => {
+         return b.id - a.id;
+       });
+        setPvtJobs(sortedJobs);
       } catch (err) {
         alert("Failed to fetch jobs");
       } finally {

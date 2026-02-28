@@ -29,6 +29,7 @@ interface Job {
   ews: string;
   other: string;
   lastDate?: string;
+  updateDate?: string;
 
   totalMarks: string;
 
@@ -81,8 +82,8 @@ export default function GovtJobsPage() {
         // Latest jobs first
         const sortedJobs = activeJobs.sort((a, b) => {
           return (
-            new Date(b.lastDate || "").getTime() -
-            new Date(a.lastDate || "").getTime()
+            new Date(b.updateDate || b.lastDate || 0).getTime() -
+            new Date(a.updateDate || a.lastDate || 0).getTime()
           );
         });
 
