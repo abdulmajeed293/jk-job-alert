@@ -380,7 +380,7 @@ export default function Home() {
       {/* Latest Jobs + Notifications Moving Cards */}
 
       <section className="bg-gray-50 py-16">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           {/* Header */}
 
           <div className="text-center mb-8">
@@ -401,7 +401,7 @@ export default function Home() {
                 <h3 className="text-xl font-bold text-gray-800">Latest Jobs</h3>
               </div>
 
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-96 overflow-hidden">
                 <div className="animate-scrollUp space-y-5">
                   {latestJobs.map((job) => (
                     <Link
@@ -443,7 +443,7 @@ export default function Home() {
                 </h3>
               </div>
 
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-96 overflow-hidden">
                 <div className="animate-scrollUp space-y-5">
                   {latestNotifications.map((job) => (
                     <Link
