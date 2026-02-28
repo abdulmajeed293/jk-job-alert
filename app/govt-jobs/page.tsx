@@ -78,8 +78,15 @@ export default function GovtJobsPage() {
           last.setHours(0, 0, 0, 0);
           return last >= today;
         });
+        // Latest jobs first
+        const sortedJobs = activeJobs.sort((a, b) => {
+          return (
+            new Date(b.lastDate || "").getTime() -
+            new Date(a.lastDate || "").getTime()
+          );
+        });
 
-        setGovtJobs(activeJobs);
+        setGovtJobs(sortedJobs);
       } catch (err) {
         console.error(err);
         alert("Failed to fetch jobs");
