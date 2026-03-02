@@ -87,7 +87,7 @@ export default function GovtJobsPage() {
           );
         });
 
-        setGovtJobs(sortedJobs);
+        setGovtJobs(sortedJobs.sort((a, b) => b.id - a.id));
       } catch (err) {
         console.error(err);
         alert("Failed to fetch jobs");
