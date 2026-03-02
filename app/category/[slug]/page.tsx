@@ -105,7 +105,7 @@ export default function CategoryPage() {
           },
         }));
 
-        setJobs(mapped);
+        setJobs(mapped.sort((a, b) => b.id - a.id));
       } catch (err) {
         console.error(err);
       } finally {
