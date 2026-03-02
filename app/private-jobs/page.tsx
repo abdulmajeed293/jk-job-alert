@@ -62,7 +62,7 @@ export default function PrivateJobsPage() {
        const sortedJobs = filtered.sort((a, b) => {
          return b.id - a.id;
        });
-        setPvtJobs(sortedJobs);
+        setPvtJobs(sortedJobs.sort((a, b) => b.id - a.id));
       } catch (err) {
         alert("Failed to fetch jobs");
       } finally {
