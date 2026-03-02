@@ -25,12 +25,15 @@ export default function Navbar() {
 
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-black text-blue-600">
+        <Link
+          href="/"
+          className="text-xl sm:text-2xl font-black text-blue-600 whitespace-nowrap"
+        >
           JK Career Updates
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center gap-3 text-sm font-semibold">
+        <nav className="hidden md:flex items-center gap-2 lg:gap-3 text-sm font-semibold">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
 
@@ -54,7 +57,7 @@ export default function Navbar() {
         {/* Mobile Button */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden rounded-lg border px-3 py-2"
+          className="md:hidden rounded-lg border px-4 py-3"
         >
           ☰
         </button>
@@ -62,7 +65,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden bg-white border-t shadow-lg">
+        <div className="md:hidden bg-white border-t shadow-lg w-full">
           <nav className="flex flex-col px-4 py-4 space-y-2 text-sm font-semibold">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
