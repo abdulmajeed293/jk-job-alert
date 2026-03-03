@@ -83,6 +83,8 @@ interface Job {
 
 export default function PrivateJobPage({ job }: { job: Job }) {
 
+  
+
 
   return (
     <article className="bg-gray-50 min-h-screen py-10">
@@ -101,9 +103,15 @@ export default function PrivateJobPage({ job }: { job: Job }) {
             {/*<span className="bg-green-100 text-green-700 px-3 py-1 rounded-full">
                 {job.applyMode}
               </span>*/}
+
             {job.application?.salary && (
               <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full">
                 {job.application.salary}
+              </span>
+            )}
+            {Number(job.totalPosts) > 0 && (
+              <span className="bg-purple-100 text-purple-800 px-4 py-1 rounded-full font-medium">
+                {job.totalPosts} Posts
               </span>
             )}
           </div>
@@ -115,6 +123,14 @@ export default function PrivateJobPage({ job }: { job: Job }) {
               className="block mt-5 text-center bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700"
             >
               Apply Now
+            </a>
+          )}
+          {job.links?.notification && (
+            <a
+              href={job.links.notification}
+              className="flex-1 text-center border border-blue-600 text-blue-600 py-3 rounded-xl font-semibold hover:bg-blue-50 transition"
+            >
+              Download Notification
             </a>
           )}
         </div>
@@ -129,6 +145,7 @@ export default function PrivateJobPage({ job }: { job: Job }) {
             />
           </div>
         )}
+      
 
         {/* Job Description */}
         {job.description && (
@@ -209,6 +226,14 @@ function Section({
     <div className="bg-white p-5 rounded-2xl shadow">
       <h2 className="font-semibold text-lg border-b pb-2 mb-3">{title}</h2>
       {children}
+    </div>
+  );
+}
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="bg-white border border-gray-200 rounded-xl p-4 text-center shadow-lg hover:shadow-xl transition-all duration-300">
+      <p className="text-xs text-gray-500">{label}</p>
+      <p className="font-semibold text-sm mt-1">{value}</p>
     </div>
   );
 }
