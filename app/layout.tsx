@@ -78,6 +78,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3770083439606684"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
       <body className="bg-gray-50 text-gray-900">
         <Navbar />
         <main className="min-h-screen">{children}</main>
