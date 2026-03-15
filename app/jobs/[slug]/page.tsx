@@ -4,37 +4,21 @@ interface Props {
   params: { slug: string };
 }
 
-type JobData = {
-  title: string;
-  department: string;
-  location: string;
-  company: string;
-  totalPosts: number;
-  introduction: string;
-  application: { salary: string; fee: string; selection: string };
-  dates: { last: string; start: string; notification: string };
-  eligibility: { qualification: string; ageLimit: string };
-} | null;
-
-async function getJob(slug: string): Promise<JobData> {
+// Your API returns flat array — find job by slug
+async function getJob(slug: string) {
   try {
-    // Try with /job/slug/ route first
-    const res = await fetch(
-      `https://api.jkcareerupdates.in/api/jobs/slug/${slug}`,
-      {
-        cache: "no-store", // changed from revalidate to no-store for testing
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    );
-
+    const res = await fetch(`https://api.jkcareerupdates.in/api/jobs`, {
+      cache: "no-store",
+    });
     if (!res.ok) return null;
+    const jobs = await res.json();
 
-    const data = await res.json();
+    // Find the job matching the slug
+    const job = Array.isArray(jobs)
+      ? jobs.find((j: { slug: string }) => j.slug === slug)
+      : null;
 
-    // Handle both { job: {...} } and direct object response
-    return data.job || data || null;
+    return job || null;
   } catch {
     return null;
   }
@@ -42,15 +26,9 @@ async function getJob(slug: string): Promise<JobData> {
 
 export async function generateMetadata({ params }: Props) {
   const job = await getJob(params.slug);
-
-  if (!job) {
-    return {
-      title: "Job Recruitment 2026 – JK Career Updates",
-    };
-  }
+  if (!job) return { title: "Job Recruitment 2026 – JK Career Updates" };
 
   const cleanText = job.introduction?.replace(/<[^>]*>/g, "").slice(0, 160);
-
   return {
     title: `${job.title} – Apply Online | JK Career Updates`,
     description: cleanText || "Latest JK Recruitment 2026",
@@ -81,13 +59,13 @@ export default async function Page({ params }: Props) {
           </p>
           <p>Organization: {job.company}</p>
           <p>Total Posts: {job.totalPosts}</p>
-          <p>Salary: {job.application?.salary}</p>
-          <p>Application Fee: {job.application?.fee}</p>
-          <p>Last Date: {job.dates?.last}</p>
-          <p>Start Date: {job.dates?.start}</p>
-          <p>Qualification: {job.eligibility?.qualification}</p>
-          <p>Age Limit: {job.eligibility?.ageLimit}</p>
-          <p>Selection Process: {job.application?.selection}</p>
+          <p>Salary: {job.salary}</p>
+          <p>Application Fee: {job.fee}</p>
+          <p>Last Date: {job.lastDate}</p>
+          <p>Start Date: {job.startDate}</p>
+          <p>Qualification: {job.qualification}</p>
+          <p>Age Limit: {job.ageLimit}</p>
+          <p>Selection Process: {job.selection}</p>
           <div dangerouslySetInnerHTML={{ __html: job.introduction || "" }} />
         </div>
       )}
