@@ -66,9 +66,7 @@ export const metadata: Metadata = {
       "Latest government and private jobs in Jammu & Kashmir with official notifications and updates.",
   },
 
-  alternates: {
-    canonical: "https://jkcareerupdates.in",
-  },
+  
 };
 
 export default function RootLayout({
