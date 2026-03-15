@@ -4,7 +4,6 @@ interface Props {
   params: { slug: string };
 }
 
-// Your API returns flat array — find job by slug
 async function getJob(slug: string) {
   try {
     const res = await fetch(`https://api.jkcareerupdates.in/api/jobs`, {
@@ -12,12 +11,9 @@ async function getJob(slug: string) {
     });
     if (!res.ok) return null;
     const jobs = await res.json();
-
-    // Find the job matching the slug
     const job = Array.isArray(jobs)
       ? jobs.find((j: { slug: string }) => j.slug === slug)
       : null;
-
     return job || null;
   } catch {
     return null;
@@ -27,7 +23,6 @@ async function getJob(slug: string) {
 export async function generateMetadata({ params }: Props) {
   const job = await getJob(params.slug);
   if (!job) return { title: "Job Recruitment 2026 – JK Career Updates" };
-
   const cleanText = job.introduction?.replace(/<[^>]*>/g, "").slice(0, 160);
   return {
     title: `${job.title} – Apply Online | JK Career Updates`,
