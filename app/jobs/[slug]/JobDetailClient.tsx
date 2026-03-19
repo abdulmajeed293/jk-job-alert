@@ -130,13 +130,10 @@ export default function JobDetailPage() {
     fetchJob();
   }, [slug]);
 
-  if (loading)
-    return <PremiumLoader />;
-  if (!job)
-    return <PremiumLoader />;
+  if (loading) return <PremiumLoader />;
+  if (!job) return <PremiumLoader />;
 
-  if (!job)
-    return <PremiumLoader />;
+  if (!job) return <PremiumLoader />;
 
   if (job.type === "Private") {
     return <PrivateJobPage job={job} />;
@@ -369,67 +366,81 @@ export default function JobDetailPage() {
           </Section>
         )}
 
-        <Section title="Age Limit">
-          <table className="w-full text-sm border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
-            <thead className="bg-blue-600 text-white">
-              <tr>
-                <th className="p-3 text-left">Category</th>
-                <th className="p-3 text-right">Age</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Use individual fields form for Age Limits object */}
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">OM</td>
-                <td className="p-3 text-right font-semibold">{job.omal}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">OBC</td>
-                <td className="p-3 text-right font-semibold">{job.obcal}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">SC</td>
-                <td className="p-3 text-right font-semibold">{job.scal}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">ST-1</td>
-                <td className="p-3 text-right font-semibold">{job.st1al}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">ST-2</td>
-                <td className="p-3 text-right font-semibold">{job.st2al}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">ALC/IB</td>
-                <td className="p-3 text-right font-semibold">{job.alcibal}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">RBA</td>
-                <td className="p-3 text-right font-semibold">{job.rbaal}</td>
-              </tr>
-              <tr className="border-t hover:bg-gray-50 transition">
-                <td className="p-3">EWS</td>
-                <td className="p-3 text-right font-semibold">{job.ewsal}</td>
-              </tr>
-              {job.pcpal && Number(job.pcpal) > 0 && (
-                <tr className="border-t hover:bg-gray-50 transition">
-                  <td className="p-3">Physically Challenged Person</td>
-                  <td className="p-3 text-right font-semibold">{job.pcpal}</td>
+        {(job.omal ||
+          job.obcal ||
+          job.scal ||
+          job.st1al ||
+          job.st2al ||
+          job.alcibal ||
+          job.rbaal ||
+          job.ewsal ||
+          job.pcpal ||
+          job.otheral) && (
+          <Section title="Age Limit">
+            <table className="w-full text-sm border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
+              <thead className="bg-blue-600 text-white">
+                <tr>
+                  <th className="p-3 text-left">Category</th>
+                  <th className="p-3 text-right">Age</th>
                 </tr>
-              )}
-              {job.otheral &&
-                job.otheral.trim() !== "" &&
-                job.otheral !== "0" && (
+              </thead>
+              <tbody>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">OM</td>
+                  <td className="p-3 text-right font-semibold">{job.omal}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">OBC</td>
+                  <td className="p-3 text-right font-semibold">{job.obcal}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">SC</td>
+                  <td className="p-3 text-right font-semibold">{job.scal}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">ST-1</td>
+                  <td className="p-3 text-right font-semibold">{job.st1al}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">ST-2</td>
+                  <td className="p-3 text-right font-semibold">{job.st2al}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">ALC/IB</td>
+                  <td className="p-3 text-right font-semibold">
+                    {job.alcibal}
+                  </td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">RBA</td>
+                  <td className="p-3 text-right font-semibold">{job.rbaal}</td>
+                </tr>
+                <tr className="border-t hover:bg-gray-50 transition">
+                  <td className="p-3">EWS</td>
+                  <td className="p-3 text-right font-semibold">{job.ewsal}</td>
+                </tr>
+                {job.pcpal && Number(job.pcpal) > 0 && (
                   <tr className="border-t hover:bg-gray-50 transition">
-                    <td className="p-3">Others</td>
+                    <td className="p-3">Physically Challenged Person</td>
                     <td className="p-3 text-right font-semibold">
-                      {job.otheral}
+                      {job.pcpal}
                     </td>
                   </tr>
                 )}
-            </tbody>
-          </table>
-        </Section>
+                {job.otheral &&
+                  job.otheral.trim() !== "" &&
+                  job.otheral !== "0" && (
+                    <tr className="border-t hover:bg-gray-50 transition">
+                      <td className="p-3">Others</td>
+                      <td className="p-3 text-right font-semibold">
+                        {job.otheral}
+                      </td>
+                    </tr>
+                  )}
+              </tbody>
+            </table>
+          </Section>
+        )}
 
         <Section title="Application Details">
           <KeyValue
