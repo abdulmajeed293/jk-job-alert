@@ -442,15 +442,35 @@ export default function JobDetailPage() {
           </Section>
         )}
 
-        <Section title="Application Details">
-          <KeyValue
-            items={[
-              ["Application Fee", job.application.fee],
-              ["Selection Process", job.application.selection],
-              ["Salary", job.application.salary],
-            ]}
-          />
-        </Section>
+        {(job.application.fee ||
+          job.application.selection ||
+          job.application.salary) && (
+          <Section title="Application Details">
+            <KeyValue
+              items={[
+                ...(job.application.fee
+                  ? [
+                      ["Application Fee", job.application.fee] as [
+                        string,
+                        string,
+                      ],
+                    ]
+                  : []),
+                ...(job.application.selection
+                  ? [
+                      ["Selection Process", job.application.selection] as [
+                        string,
+                        string,
+                      ],
+                    ]
+                  : []),
+                ...(job.application.salary
+                  ? [["Salary", job.application.salary] as [string, string]]
+                  : []),
+              ]}
+            />
+          </Section>
+        )}
         {((job.exam?.syllabus && job.exam.syllabus.length > 0) ||
           (job.exam?.pattern && job.exam.pattern.length > 0) ||
           job.syllabus_link) && (
