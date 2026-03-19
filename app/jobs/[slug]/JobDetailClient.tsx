@@ -256,7 +256,9 @@ export default function JobDetailPage() {
           <Stat label="Start Date" value={formatDate(job.dates.start)} />
           <Stat label="Last Date" value={formatDate(job.dates.last)} />
           <Stat label="Age Limit" value={job.eligibility.ageLimit} />
-          <Stat label="Applicatin Fee" value={job.application.fee} />
+          {job.application.fee && (
+            <Stat label="Application Fee" value={job.application.fee} />
+          )}
           {/* <Stat label="Qualification" value={job.eligibility.qualification} /> */}
           <Stat label="Salary" value={job.application.salary} />
           {/* <Stat label="Selection" value={job.application.selection} /> */}
