@@ -82,6 +82,21 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3770083439606684"
           crossOrigin="anonymous"
         ></script>
+
+        {/* Infolinks Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+        var infolinks_pid = 3444352;
+        var infolinks_wsid = 0;
+      `,
+          }}
+        />
+
+        <script
+          async
+          src="//resources.infolinks.com/js/infolinks_main.js"
+        ></script>
       </head>
       <body className="bg-gray-50 text-gray-900">
         <Navbar />
