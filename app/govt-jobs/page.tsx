@@ -46,9 +46,9 @@ interface Job {
 async function getGovtJobs(): Promise<Job[]> {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/jobs?type=Government`,
+      `https://api.jkcareerupdates.in/api/jobs?type=Government`,
       {
-        next: { revalidate: 3600 }, // Cache for 1 hour, then refresh
+        next: { revalidate: 3600 },
       },
     );
 
