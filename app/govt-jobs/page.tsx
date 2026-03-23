@@ -1,10 +1,8 @@
-"use client";
+// app/govt-jobs/page.tsx
+// ✅ NO "use client" at the top — this is a Server Component
 
-import { useEffect, useState } from "react";
 import JobCard from "@/components/JobCard";
 import FeaturedJobsSlider from "@/components/FeaturedJobsSlider";
-import api from "@/app/utils/api";
-import PremiumLoader from "@/components/PremiumLoader";
 
 interface Job {
   id: number;
@@ -30,10 +28,7 @@ interface Job {
   other: string;
   lastDate?: string;
   updateDate?: string;
-
   totalMarks: string;
-
-  /* ================== Age limit ================== */
   omal: string;
   scal: string;
   st1al: string;
@@ -47,74 +42,62 @@ interface Job {
   links: { apply: string; notification: string; official: string };
 }
 
-export default function GovtJobsPage() {
-  const [govtJobs, setGovtJobs] = useState<Job[]>([]);
-  const [loading, setLoading] = useState(true);
+// ✅ This runs on the SERVER — Google can read all job content
+async function getGovtJobs(): Promise<Job[]> {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/jobs?type=Government`,
+      {
+        next: { revalidate: 3600 }, // Cache for 1 hour, then refresh
+      },
+    );
 
-  useEffect(() => {
-    const handler = () => {
-      window.dispatchEvent(new Event("filters-change"));
-    };
+    if (!res.ok) return [];
 
-    const fetchJobs = async () => {
-      try {
-        const urlParams = new URLSearchParams(window.location.search);
-        const department = urlParams.get("department");
-        const location = urlParams.get("location");
+    const jobs: Job[] = await res.json();
 
-        const res = await api.get<Job[]>("/jobs", {
-          params: {
-            type: "Government",
-            category: department || undefined,
-            search: location || undefined,
-          },
-        });
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+    const activeJobs = jobs.filter((job) => {
+      if (!job.lastDate) return true;
+      const last = new Date(job.lastDate);
+      last.setHours(0, 0, 0, 0);
+      return last >= today;
+    });
 
-        const activeJobs = res.data.filter((job) => {
-          if (!job.lastDate) return true;
-          const last = new Date(job.lastDate);
-          last.setHours(0, 0, 0, 0);
-          return last >= today;
-        });
-        // Latest jobs first
-        const sortedJobs = activeJobs.sort((a, b) => {
-          return (
-            new Date(b.updateDate || b.lastDate || 0).getTime() -
-            new Date(a.updateDate || a.lastDate || 0).getTime()
-          );
-        });
+    return activeJobs.sort((a, b) => b.id - a.id);
+  } catch (err) {
+    console.error("Failed to fetch govt jobs:", err);
+    return [];
+  }
+}
 
-        setGovtJobs(sortedJobs.sort((a, b) => b.id - a.id));
-      } catch (err) {
-        console.error(err);
-        alert("Failed to fetch jobs");
-      } finally {
-        setLoading(false);
-      }
-    };
+// ✅ SEO Metadata — Google will read this
+export const metadata = {
+  title: "Latest Government Jobs in J&K 2026 – JKSSB, JKPSC, Police",
+  description:
+    "Browse all latest Government job vacancies in Jammu & Kashmir including JKSSB, JKPSC, Police, Army and more. Check eligibility, last date, salary and apply online.",
+};
 
-    fetchJobs();
-    window.addEventListener("filters-change", fetchJobs);
-    return () => window.removeEventListener("filters-change", fetchJobs);
-  }, []);
-
-  if (loading) if (loading) return <PremiumLoader />;
+export default async function GovtJobsPage() {
+  const govtJobs = await getGovtJobs(); // ✅ Fetched on server, not browser
 
   return (
     <section className="bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 py-10">
-        <h1 className="text-3xl font-bold mb-4">Latest Government Jobs</h1>
+        <h1 className="text-3xl font-bold mb-4">
+          Latest Government Jobs in J&K 2026
+        </h1>
         <p className="text-gray-600 mb-8">
-          Find all latest JK Government vacancies with official links, salary,
-          eligibility, and last date details.
+          Find all latest JK Government vacancies including JKSSB, JKPSC,
+          Police, Army and more — with official links, salary details,
+          eligibility criteria, and last date.
         </p>
 
+        {/* FeaturedJobsSlider needs "use client" — see Step 2 below */}
         <FeaturedJobsSlider jobs={govtJobs} />
 
-        {/* Sidebar removed – full width jobs now */}
         <div className="mt-10">
           {govtJobs.length === 0 ? (
             <div className="bg-white border rounded-xl p-10 text-center shadow">
