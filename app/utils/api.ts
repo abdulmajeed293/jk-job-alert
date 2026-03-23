@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL ||"https://api.jkcareerupdates.in/api/jobs",
+  baseURL: process.env.NEXT_PUBLIC_API_URL ||"https://api.jkcareerupdates.in/api/",
   headers: {
     "Content-Type": "application/json",
   },
